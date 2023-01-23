@@ -2,8 +2,10 @@
 
 namespace Ingame.ConfigProvision
 {
-	public struct ConfigProvider
+	public class ConfigProvider
 	{
 		public HelicoptersConfig helicoptersConfig;
+
+		public HelicoptersConfig HelicoptersConfig => helicoptersConfig;
 	}
 }

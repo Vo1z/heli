@@ -1,7 +1,7 @@
+using Ingame.Helicopter;
 using Ingame.Input;
 using Leopotam.EcsLite;
 using Leopotam.EcsLite.Di;
-using Source.Ingame.Movement;
 using UnityEngine;
 using Zenject;
 
@@ -88,8 +88,9 @@ public sealed class EcsSetup : MonoBehaviour
 		_updateSystems
 			//Input
 			.Add(new ReceiveInputSystem())
-			//Movement
-			.Add(new MoveObjectDueToItsVelocitySystem());
+			//Helicopter movement
+			.Add(new ConvertInputToHelicopterControlValuesSystem())
+			.Add(new MoveHelicopterSystem());
 	}
 	
 	private void InitializeSystems()

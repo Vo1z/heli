@@ -24,7 +24,7 @@ namespace Ingame.Tools
 			if (helicoptersConfig.HasHelicopterId(inputHelicopterId))
 			{
 				EditorGUI.DrawRect(validationLabelPos, new Color(0.09f, 0.26f, 0.09f));
-				EditorGUI.LabelField(validationLabelPos, $"Valid ID: ({helicoptersConfig[inputHelicopterId].helicopterName})");
+				EditorGUI.LabelField(validationLabelPos, $"Valid ID: ({helicoptersConfig.GetHelicopterConfigData(inputHelicopterId).helicopterName})");
 			}
 			else
 			{

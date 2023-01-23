@@ -2,8 +2,8 @@
 
 namespace Ingame.UnityModels
 {
-	public struct TransformModel
+	public struct RigidBodyModel
 	{
-		public Transform transform;
+		public Rigidbody rigidbody;
 	}
 }

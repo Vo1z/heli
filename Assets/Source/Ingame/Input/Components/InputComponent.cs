@@ -4,7 +4,11 @@ namespace Source.Ingame.Input
 {
 	public struct InputComponent
 	{
-		public Vector2 movementInput;
+		public float pitchInput;
+		public float rollInput;
+		public float yawInput;
+		public float throttleInput;
+		
 		public Vector2 rotationInput;
 	}
 }

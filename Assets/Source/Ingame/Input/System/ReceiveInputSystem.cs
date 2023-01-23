@@ -24,19 +24,23 @@ namespace Ingame.Input
 			_moveInputAction = _inputActions.Value.Helicopter.Movement;
 			_rotateInputAction = _inputActions.Value.Helicopter.Rotation;
 		}
-		
+
 		public void Init(IEcsSystems systems)
 		{
 			int inputEntity = _world.Value.NewEntity();
 			_inputCmpPool.Value.Add(inputEntity);
 		}
-		
+
 		public void Run(IEcsSystems systems)
 		{
 			int inputEntity = _inputCmpFilter.Value.GetRawEntities()[0];
 			ref var inputCmp = ref _inputCmpPool.Value.Get(inputEntity);
 
-			inputCmp.movementInput = _moveInputAction.ReadValue<Vector2>();
+			inputCmp.pitchInput = _moveInputAction.ReadValue<Vector2>().y;
+			inputCmp.yawInput = _moveInputAction.ReadValue<Vector2>().x;
+			inputCmp.rollInput = _rotateInputAction.ReadValue<Vector2>().x;
+			inputCmp.throttleInput = _rotateInputAction.ReadValue<Vector2>().x;
+
 			inputCmp.rotationInput = _rotateInputAction.ReadValue<Vector2>();
 		}
 	}

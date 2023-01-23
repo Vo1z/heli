@@ -7,12 +7,15 @@ namespace Ingame.Helicopter
 	public sealed class HelicoptersConfig : ScriptableObject
 	{
 		[SerializeField] private HelicopterConfigData[] helicopterConfigs;
-		
-		public HelicopterConfigData this[int helicopterId] => helicopterConfigs[helicopterId];
 
 		public bool HasHelicopterId(int id)
 		{
 			return id > -1 && id < helicopterConfigs.Length;
+		}
+
+		public HelicopterConfigData GetHelicopterConfigData(int id)
+		{
+			return helicopterConfigs[id];
 		}
 	}
 
@@ -20,6 +23,8 @@ namespace Ingame.Helicopter
 	public struct HelicopterConfigData
 	{
 		public string helicopterName;
-		public float speed;
+		
+		public float throttleGainSpeed;
+		public float rotationResponsiveness;
 	}
 }

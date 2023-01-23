@@ -1,5 +1,5 @@
 ﻿using Ingame.EcsExtensions;
-using Source.Ingame.UnityModels;
+using Ingame.UnityModels;
 
 namespace Source.Ingame.UnityIntegration
 {
