@@ -14,5 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   helicopterConfigs:
   - helicopterName: MD-500
-    throttleGainSpeed: 10
-    rotationResponsiveness: 10
+    throttleGainSpeed: 40000
+    maxThrottle: 80000
+    rotationResponsiveness: 25000
+    minMaxSpeedForNormalization: {x: 30, y: 130}
+    minNormalizationDamping: 0.3
+    additionalGravitation: 8000

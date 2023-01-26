@@ -1,5 +1,10 @@
+using Ingame.Camerawork;
+using Ingame.Combat;
+using Ingame.ConfigProvision;
+using Ingame.Debugging;
 using Ingame.Helicopter;
 using Ingame.Input;
+using Ingame.UI.Debugging;
 using Leopotam.EcsLite;
 using Leopotam.EcsLite.Di;
 using UnityEngine;
@@ -19,9 +24,11 @@ public sealed class EcsSetup : MonoBehaviour
 #endif
 
 	private InputActions _inputActions;
+	private ConfigProvider _configProvider;
+	private DiContainer _diContainer;
 
 	[Inject]
-	private void Construct(EcsWorld world, InputActions inputActions)
+	private void Construct(EcsWorld world, InputActions inputActions, ConfigProvider configProvider, DiContainer diContainer)
 	{
 		_world = world;
 		_updateSystems = new EcsSystems(world);
@@ -29,7 +36,10 @@ public sealed class EcsSetup : MonoBehaviour
 #if UNITY_EDITOR
 		_editorSystems = new EcsSystems(_world);
 #endif
+		
 		_inputActions = inputActions;
+		_configProvider = configProvider;
+		_diContainer = diContainer;
 	}
 
 	private void Awake()
@@ -74,10 +84,15 @@ public sealed class EcsSetup : MonoBehaviour
 	{
 		_updateSystems
 			.Inject(_world)
-			.Inject(_inputActions);
-		
+			.Inject(_inputActions)
+			.Inject(_configProvider)
+			.Inject(_diContainer);
+
 		_fixUpdateSystems
-			.Inject(_world);
+			.Inject(_world)
+			.Inject(_inputActions)
+			.Inject(_configProvider)
+			.Inject(_diContainer);
 	}
 
 	private void AddSystems()
@@ -86,11 +101,26 @@ public sealed class EcsSetup : MonoBehaviour
 		_editorSystems.Add(new EcsWorldDebugSystem());
 #endif
 		_updateSystems
-			//Input
+			//Input 
 			.Add(new ReceiveInputSystem())
-			//Helicopter movement
+			//Helicopter
 			.Add(new ConvertInputToHelicopterControlValuesSystem())
+			.Add(new CalculateHelicopterStatsSystem())
+			.Add(new RotateRotorSystem())
+			//Combat
+			.Add(new SpawnRocketsSystem())
+			.Add(new MoveRocketSystem())
+			//Camerawork
+			.Add(new RotateCameraAroundHelicopterSystem())
+			//Debugging
+			.Add(new ChangeTargetFpsSystem())
+			.Add(new PresentDebuggingInfoToUiSystem());
+
+
+		_fixUpdateSystems
+			//Helicopter
 			.Add(new MoveHelicopterSystem());
+
 	}
 	
 	private void InitializeSystems()

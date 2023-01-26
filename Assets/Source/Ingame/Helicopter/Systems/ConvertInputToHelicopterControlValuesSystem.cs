@@ -26,13 +26,13 @@ namespace Ingame.Helicopter
 				ref var heliCmp = ref _helicopterCmpPool.Value.Get(heliEntity);
 				var heliConfig = _configProvider.Value.HelicoptersConfig.GetHelicopterConfigData(heliCmp.helicopterId);
 
-				heliCmp.currentPitch = inputCmp.pitchInput * heliConfig.rotationResponsiveness * Time.deltaTime;
-				heliCmp.currentYaw = inputCmp.yawInput * heliConfig.rotationResponsiveness * Time.deltaTime;
-				heliCmp.currentRoll = inputCmp.rollInput * heliConfig.rotationResponsiveness * Time.deltaTime;
+				heliCmp.currentPitch = inputCmp.pitchInput * heliConfig.rotationResponsiveness;
+				heliCmp.currentYaw = inputCmp.yawInput * heliConfig.rotationResponsiveness;
+				heliCmp.currentRoll = inputCmp.rollInput * heliConfig.rotationResponsiveness;
 				heliCmp.currentThrottle += inputCmp.throttleInput * heliConfig.throttleGainSpeed * Time.deltaTime;
 
-				heliCmp.currentThrottle = Mathf.Clamp(heliCmp.currentThrottle, 0f, 100f);
+				heliCmp.currentThrottle = Mathf.Clamp(heliCmp.currentThrottle, 0, heliConfig.maxThrottle);
 			}
 		}
 	}
-}
+}	

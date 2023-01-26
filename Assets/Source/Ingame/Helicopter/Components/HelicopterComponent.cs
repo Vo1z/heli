@@ -9,5 +9,8 @@
 		public float currentRoll;
 		
 		public float currentThrottle;
+
+		public float currentSpeed;
+		public float currentAltitude;
 	}
 }

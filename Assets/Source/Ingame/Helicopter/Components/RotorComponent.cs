@@ -4,6 +4,7 @@ namespace Ingame.Helicopter
 {
 	public struct RotorComponent
 	{
-		public Transform rotorTransform;
+		public Vector3 rotateAroundVector;
+		public float speed;
 	}
 }

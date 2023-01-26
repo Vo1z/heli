@@ -1,13 +1,15 @@
-﻿using Ingame.EcsExtensions;
+﻿using EcsExtensions.Convertion;
 using Ingame.Player;
+using Leopotam.EcsLite;
 
 namespace Source.Ingame.Player
 {
-	public sealed class PlayerBaker : EcsBaker
+	public sealed class PlayerBaker : EcsMonoBaker
 	{
-		protected override void Bake(int entity)
+		public override void Bake(int entity, EcsWorld world)
 		{
-			var playerTagPool = _world.GetPool<PlayerTag>();
+			var playerTagPool = world.GetPool<PlayerTag>();
+			
 			playerTagPool.Add(entity);
 		}
 	}

@@ -30,18 +30,356 @@ namespace Ingame.Input
             ""id"": ""1b272776-1f37-4d61-8468-11a83501f141"",
             ""actions"": [
                 {
-                    ""name"": ""Movement"",
+                    ""name"": ""Pitch"",
                     ""type"": ""Value"",
-                    ""id"": ""7398e8ed-1780-489a-b64d-a735abbb1949"",
-                    ""expectedControlType"": ""Vector2"",
+                    ""id"": ""d74e9e0d-cd18-4b58-b477-fa0866140822"",
+                    ""expectedControlType"": ""Axis"",
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
                 },
                 {
+                    ""name"": ""Yaw"",
+                    ""type"": ""Value"",
+                    ""id"": ""943fe5a0-f9ae-437b-a2be-f7a706be17b9"",
+                    ""expectedControlType"": ""Axis"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Roll"",
+                    ""type"": ""Value"",
+                    ""id"": ""ea6cddc8-3a0e-45b0-a6a7-0bfefb9f0234"",
+                    ""expectedControlType"": ""Axis"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Throttle"",
+                    ""type"": ""Value"",
+                    ""id"": ""d0016df4-2f3d-4db9-933c-caacc6af77ad"",
+                    ""expectedControlType"": ""Axis"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": ""Keyboard - WS"",
+                    ""id"": ""9b88c200-7390-4112-8ec5-e153f9e088fb"",
+                    ""path"": ""1DAxis"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Pitch"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""negative"",
+                    ""id"": ""330258b8-356a-48d8-9e7b-e462692f74aa"",
+                    ""path"": ""<Keyboard>/s"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Pitch"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""positive"",
+                    ""id"": ""285643fd-c19e-4ada-b63e-7e6d02e73b86"",
+                    ""path"": ""<Keyboard>/w"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Pitch"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""Gamepad - LeftStickVertical"",
+                    ""id"": ""a9ee4561-cba9-4304-8b2a-ee8817f8c82c"",
+                    ""path"": ""1DAxis"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Pitch"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""negative"",
+                    ""id"": ""92875fea-4296-418b-ad64-ab0c1d615d9b"",
+                    ""path"": ""<Gamepad>/leftStick/down"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Pitch"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""positive"",
+                    ""id"": ""af692fed-bd79-4f29-9ccb-0f573b821f26"",
+                    ""path"": ""<Gamepad>/leftStick/up"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Pitch"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""Keyboard - QE"",
+                    ""id"": ""1c0d261d-f38d-4636-b719-c5a8c2d57ee3"",
+                    ""path"": ""1DAxis"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Yaw"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""negative"",
+                    ""id"": ""d0a8c69d-1acc-4264-a264-4ff65dcbbe39"",
+                    ""path"": ""<Keyboard>/q"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Yaw"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""positive"",
+                    ""id"": ""13d5d945-7852-449d-bbd1-e6bfceac6b3e"",
+                    ""path"": ""<Keyboard>/e"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Yaw"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""Gamepad - RightStickHorizontal"",
+                    ""id"": ""40637adc-e967-4dce-b3ea-e9775d02a547"",
+                    ""path"": ""1DAxis"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Yaw"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""negative"",
+                    ""id"": ""07895e9f-a999-4122-ad27-446f026f18a4"",
+                    ""path"": ""<Gamepad>/rightStick/left"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Yaw"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""positive"",
+                    ""id"": ""ef5f98ec-9c3b-47dc-bc38-6d99d4ae26b3"",
+                    ""path"": ""<Gamepad>/rightStick/right"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Yaw"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""Keyboard - AD"",
+                    ""id"": ""192f3d3f-6c72-4eaf-b0c3-6fd3de19017d"",
+                    ""path"": ""1DAxis"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Roll"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""negative"",
+                    ""id"": ""65d56b8a-ae30-4a42-ab48-29c10155a205"",
+                    ""path"": ""<Keyboard>/a"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Roll"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""positive"",
+                    ""id"": ""50442f45-5cff-40f7-b349-a76d540cbacd"",
+                    ""path"": ""<Keyboard>/d"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Roll"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""Gamepad - LeftStickHorizontal"",
+                    ""id"": ""c8ffc032-68b9-490c-a28f-05016eef4c41"",
+                    ""path"": ""1DAxis"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Roll"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""negative"",
+                    ""id"": ""b3da95a2-3dd5-43c1-b3ab-a16252aa931c"",
+                    ""path"": ""<Gamepad>/leftStick/left"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Roll"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""positive"",
+                    ""id"": ""07102cb7-b054-4e87-9f4a-7b0a29d333e5"",
+                    ""path"": ""<Gamepad>/leftStick/right"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Roll"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""Keyboard - SpaceCtrl"",
+                    ""id"": ""0b34ab1c-0fd7-41fe-8119-2cedfa8e9dee"",
+                    ""path"": ""1DAxis"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Throttle"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""negative"",
+                    ""id"": ""4217679c-3a11-41ca-9a6e-357d6ee26a80"",
+                    ""path"": ""<Keyboard>/ctrl"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Throttle"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""positive"",
+                    ""id"": ""54c43770-16ce-4eb7-945d-de0b980c826a"",
+                    ""path"": ""<Keyboard>/space"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Throttle"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""Gamepad - XA"",
+                    ""id"": ""d11e934c-69bd-456e-ad87-59d5eba2c1f5"",
+                    ""path"": ""1DAxis"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Throttle"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""negative"",
+                    ""id"": ""b3b5c610-da15-4cca-85aa-cf57a3b73141"",
+                    ""path"": ""<Gamepad>/leftShoulder"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Throttle"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""positive"",
+                    ""id"": ""e8b79790-fbe0-486a-8d41-f56bf1cb3a9b"",
+                    ""path"": ""<Gamepad>/rightShoulder"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Throttle"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                }
+            ]
+        },
+        {
+            ""name"": ""Combat"",
+            ""id"": ""4dbecbe4-e420-4abf-8db4-9e5be94b84c3"",
+            ""actions"": [
+                {
+                    ""name"": ""Shoot"",
+                    ""type"": ""Button"",
+                    ""id"": ""5aed936a-7ca3-4509-b5b9-960e66e179eb"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""0aed9262-f813-4ec5-ad7a-b44ec3ee9466"",
+                    ""path"": ""<Mouse>/leftButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Shoot"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""5d6e6cef-a447-4c22-ba90-61b79d770c46"",
+                    ""path"": ""<Gamepad>/rightTrigger"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Shoot"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
+        },
+        {
+            ""name"": ""Camera"",
+            ""id"": ""24a6bf64-3f6c-4b97-bb52-922055c1e891"",
+            ""actions"": [
+                {
                     ""name"": ""Rotation"",
                     ""type"": ""Value"",
-                    ""id"": ""cc88c5ba-fe6b-4ed6-b682-a7cb9b726acf"",
+                    ""id"": ""adff3318-a449-492a-8171-886beace1fcc"",
                     ""expectedControlType"": ""Vector2"",
                     ""processors"": """",
                     ""interactions"": """",
@@ -50,68 +388,41 @@ namespace Ingame.Input
             ],
             ""bindings"": [
                 {
-                    ""name"": ""Keyboard"",
-                    ""id"": ""30ddaccc-9237-4992-a47e-ec499688f0f9"",
-                    ""path"": ""2DVector"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Movement"",
-                    ""isComposite"": true,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": ""up"",
-                    ""id"": ""5047532f-82f6-4ca2-8209-206a2cb1ef01"",
-                    ""path"": ""<Keyboard>/w"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Movement"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": ""down"",
-                    ""id"": ""fb1261fa-caee-4986-8752-2b1b59437c24"",
-                    ""path"": ""<Keyboard>/s"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Movement"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": ""left"",
-                    ""id"": ""cf5a5a1e-1783-49e3-82bc-26d4293c3a10"",
-                    ""path"": ""<Keyboard>/a"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Movement"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": ""right"",
-                    ""id"": ""eec2061f-549a-437e-b286-64e46abfbb09"",
-                    ""path"": ""<Keyboard>/d"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Movement"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
                     ""name"": """",
-                    ""id"": ""a1e51a89-7913-47e6-bc98-553e921ce329"",
+                    ""id"": ""ec12c62b-2787-483f-8573-f4f0784124f0"",
                     ""path"": ""<Mouse>/delta"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""Rotation"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
+        },
+        {
+            ""name"": ""Utils"",
+            ""id"": ""7d9bf9de-4430-4ea7-bcdb-5028a0dbde77"",
+            ""actions"": [
+                {
+                    ""name"": ""ChangeTargetFPS"",
+                    ""type"": ""Button"",
+                    ""id"": ""9d6ffd30-a21d-4273-a996-ac4e247881db"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""906d6860-edb0-49ed-b4b1-6d49eb66a5ab"",
+                    ""path"": ""<Keyboard>/backquote"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ChangeTargetFPS"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -122,8 +433,19 @@ namespace Ingame.Input
 }");
             // Helicopter
             m_Helicopter = asset.FindActionMap("Helicopter", throwIfNotFound: true);
-            m_Helicopter_Movement = m_Helicopter.FindAction("Movement", throwIfNotFound: true);
-            m_Helicopter_Rotation = m_Helicopter.FindAction("Rotation", throwIfNotFound: true);
+            m_Helicopter_Pitch = m_Helicopter.FindAction("Pitch", throwIfNotFound: true);
+            m_Helicopter_Yaw = m_Helicopter.FindAction("Yaw", throwIfNotFound: true);
+            m_Helicopter_Roll = m_Helicopter.FindAction("Roll", throwIfNotFound: true);
+            m_Helicopter_Throttle = m_Helicopter.FindAction("Throttle", throwIfNotFound: true);
+            // Combat
+            m_Combat = asset.FindActionMap("Combat", throwIfNotFound: true);
+            m_Combat_Shoot = m_Combat.FindAction("Shoot", throwIfNotFound: true);
+            // Camera
+            m_Camera = asset.FindActionMap("Camera", throwIfNotFound: true);
+            m_Camera_Rotation = m_Camera.FindAction("Rotation", throwIfNotFound: true);
+            // Utils
+            m_Utils = asset.FindActionMap("Utils", throwIfNotFound: true);
+            m_Utils_ChangeTargetFPS = m_Utils.FindAction("ChangeTargetFPS", throwIfNotFound: true);
         }
 
         public void Dispose()
@@ -183,14 +505,18 @@ namespace Ingame.Input
         // Helicopter
         private readonly InputActionMap m_Helicopter;
         private IHelicopterActions m_HelicopterActionsCallbackInterface;
-        private readonly InputAction m_Helicopter_Movement;
-        private readonly InputAction m_Helicopter_Rotation;
+        private readonly InputAction m_Helicopter_Pitch;
+        private readonly InputAction m_Helicopter_Yaw;
+        private readonly InputAction m_Helicopter_Roll;
+        private readonly InputAction m_Helicopter_Throttle;
         public struct HelicopterActions
         {
             private @InputActions m_Wrapper;
             public HelicopterActions(@InputActions wrapper) { m_Wrapper = wrapper; }
-            public InputAction @Movement => m_Wrapper.m_Helicopter_Movement;
-            public InputAction @Rotation => m_Wrapper.m_Helicopter_Rotation;
+            public InputAction @Pitch => m_Wrapper.m_Helicopter_Pitch;
+            public InputAction @Yaw => m_Wrapper.m_Helicopter_Yaw;
+            public InputAction @Roll => m_Wrapper.m_Helicopter_Roll;
+            public InputAction @Throttle => m_Wrapper.m_Helicopter_Throttle;
             public InputActionMap Get() { return m_Wrapper.m_Helicopter; }
             public void Enable() { Get().Enable(); }
             public void Disable() { Get().Disable(); }
@@ -200,30 +526,155 @@ namespace Ingame.Input
             {
                 if (m_Wrapper.m_HelicopterActionsCallbackInterface != null)
                 {
-                    @Movement.started -= m_Wrapper.m_HelicopterActionsCallbackInterface.OnMovement;
-                    @Movement.performed -= m_Wrapper.m_HelicopterActionsCallbackInterface.OnMovement;
-                    @Movement.canceled -= m_Wrapper.m_HelicopterActionsCallbackInterface.OnMovement;
-                    @Rotation.started -= m_Wrapper.m_HelicopterActionsCallbackInterface.OnRotation;
-                    @Rotation.performed -= m_Wrapper.m_HelicopterActionsCallbackInterface.OnRotation;
-                    @Rotation.canceled -= m_Wrapper.m_HelicopterActionsCallbackInterface.OnRotation;
+                    @Pitch.started -= m_Wrapper.m_HelicopterActionsCallbackInterface.OnPitch;
+                    @Pitch.performed -= m_Wrapper.m_HelicopterActionsCallbackInterface.OnPitch;
+                    @Pitch.canceled -= m_Wrapper.m_HelicopterActionsCallbackInterface.OnPitch;
+                    @Yaw.started -= m_Wrapper.m_HelicopterActionsCallbackInterface.OnYaw;
+                    @Yaw.performed -= m_Wrapper.m_HelicopterActionsCallbackInterface.OnYaw;
+                    @Yaw.canceled -= m_Wrapper.m_HelicopterActionsCallbackInterface.OnYaw;
+                    @Roll.started -= m_Wrapper.m_HelicopterActionsCallbackInterface.OnRoll;
+                    @Roll.performed -= m_Wrapper.m_HelicopterActionsCallbackInterface.OnRoll;
+                    @Roll.canceled -= m_Wrapper.m_HelicopterActionsCallbackInterface.OnRoll;
+                    @Throttle.started -= m_Wrapper.m_HelicopterActionsCallbackInterface.OnThrottle;
+                    @Throttle.performed -= m_Wrapper.m_HelicopterActionsCallbackInterface.OnThrottle;
+                    @Throttle.canceled -= m_Wrapper.m_HelicopterActionsCallbackInterface.OnThrottle;
                 }
                 m_Wrapper.m_HelicopterActionsCallbackInterface = instance;
                 if (instance != null)
                 {
-                    @Movement.started += instance.OnMovement;
-                    @Movement.performed += instance.OnMovement;
-                    @Movement.canceled += instance.OnMovement;
+                    @Pitch.started += instance.OnPitch;
+                    @Pitch.performed += instance.OnPitch;
+                    @Pitch.canceled += instance.OnPitch;
+                    @Yaw.started += instance.OnYaw;
+                    @Yaw.performed += instance.OnYaw;
+                    @Yaw.canceled += instance.OnYaw;
+                    @Roll.started += instance.OnRoll;
+                    @Roll.performed += instance.OnRoll;
+                    @Roll.canceled += instance.OnRoll;
+                    @Throttle.started += instance.OnThrottle;
+                    @Throttle.performed += instance.OnThrottle;
+                    @Throttle.canceled += instance.OnThrottle;
+                }
+            }
+        }
+        public HelicopterActions @Helicopter => new HelicopterActions(this);
+
+        // Combat
+        private readonly InputActionMap m_Combat;
+        private ICombatActions m_CombatActionsCallbackInterface;
+        private readonly InputAction m_Combat_Shoot;
+        public struct CombatActions
+        {
+            private @InputActions m_Wrapper;
+            public CombatActions(@InputActions wrapper) { m_Wrapper = wrapper; }
+            public InputAction @Shoot => m_Wrapper.m_Combat_Shoot;
+            public InputActionMap Get() { return m_Wrapper.m_Combat; }
+            public void Enable() { Get().Enable(); }
+            public void Disable() { Get().Disable(); }
+            public bool enabled => Get().enabled;
+            public static implicit operator InputActionMap(CombatActions set) { return set.Get(); }
+            public void SetCallbacks(ICombatActions instance)
+            {
+                if (m_Wrapper.m_CombatActionsCallbackInterface != null)
+                {
+                    @Shoot.started -= m_Wrapper.m_CombatActionsCallbackInterface.OnShoot;
+                    @Shoot.performed -= m_Wrapper.m_CombatActionsCallbackInterface.OnShoot;
+                    @Shoot.canceled -= m_Wrapper.m_CombatActionsCallbackInterface.OnShoot;
+                }
+                m_Wrapper.m_CombatActionsCallbackInterface = instance;
+                if (instance != null)
+                {
+                    @Shoot.started += instance.OnShoot;
+                    @Shoot.performed += instance.OnShoot;
+                    @Shoot.canceled += instance.OnShoot;
+                }
+            }
+        }
+        public CombatActions @Combat => new CombatActions(this);
+
+        // Camera
+        private readonly InputActionMap m_Camera;
+        private ICameraActions m_CameraActionsCallbackInterface;
+        private readonly InputAction m_Camera_Rotation;
+        public struct CameraActions
+        {
+            private @InputActions m_Wrapper;
+            public CameraActions(@InputActions wrapper) { m_Wrapper = wrapper; }
+            public InputAction @Rotation => m_Wrapper.m_Camera_Rotation;
+            public InputActionMap Get() { return m_Wrapper.m_Camera; }
+            public void Enable() { Get().Enable(); }
+            public void Disable() { Get().Disable(); }
+            public bool enabled => Get().enabled;
+            public static implicit operator InputActionMap(CameraActions set) { return set.Get(); }
+            public void SetCallbacks(ICameraActions instance)
+            {
+                if (m_Wrapper.m_CameraActionsCallbackInterface != null)
+                {
+                    @Rotation.started -= m_Wrapper.m_CameraActionsCallbackInterface.OnRotation;
+                    @Rotation.performed -= m_Wrapper.m_CameraActionsCallbackInterface.OnRotation;
+                    @Rotation.canceled -= m_Wrapper.m_CameraActionsCallbackInterface.OnRotation;
+                }
+                m_Wrapper.m_CameraActionsCallbackInterface = instance;
+                if (instance != null)
+                {
                     @Rotation.started += instance.OnRotation;
                     @Rotation.performed += instance.OnRotation;
                     @Rotation.canceled += instance.OnRotation;
                 }
             }
         }
-        public HelicopterActions @Helicopter => new HelicopterActions(this);
+        public CameraActions @Camera => new CameraActions(this);
+
+        // Utils
+        private readonly InputActionMap m_Utils;
+        private IUtilsActions m_UtilsActionsCallbackInterface;
+        private readonly InputAction m_Utils_ChangeTargetFPS;
+        public struct UtilsActions
+        {
+            private @InputActions m_Wrapper;
+            public UtilsActions(@InputActions wrapper) { m_Wrapper = wrapper; }
+            public InputAction @ChangeTargetFPS => m_Wrapper.m_Utils_ChangeTargetFPS;
+            public InputActionMap Get() { return m_Wrapper.m_Utils; }
+            public void Enable() { Get().Enable(); }
+            public void Disable() { Get().Disable(); }
+            public bool enabled => Get().enabled;
+            public static implicit operator InputActionMap(UtilsActions set) { return set.Get(); }
+            public void SetCallbacks(IUtilsActions instance)
+            {
+                if (m_Wrapper.m_UtilsActionsCallbackInterface != null)
+                {
+                    @ChangeTargetFPS.started -= m_Wrapper.m_UtilsActionsCallbackInterface.OnChangeTargetFPS;
+                    @ChangeTargetFPS.performed -= m_Wrapper.m_UtilsActionsCallbackInterface.OnChangeTargetFPS;
+                    @ChangeTargetFPS.canceled -= m_Wrapper.m_UtilsActionsCallbackInterface.OnChangeTargetFPS;
+                }
+                m_Wrapper.m_UtilsActionsCallbackInterface = instance;
+                if (instance != null)
+                {
+                    @ChangeTargetFPS.started += instance.OnChangeTargetFPS;
+                    @ChangeTargetFPS.performed += instance.OnChangeTargetFPS;
+                    @ChangeTargetFPS.canceled += instance.OnChangeTargetFPS;
+                }
+            }
+        }
+        public UtilsActions @Utils => new UtilsActions(this);
         public interface IHelicopterActions
         {
-            void OnMovement(InputAction.CallbackContext context);
+            void OnPitch(InputAction.CallbackContext context);
+            void OnYaw(InputAction.CallbackContext context);
+            void OnRoll(InputAction.CallbackContext context);
+            void OnThrottle(InputAction.CallbackContext context);
+        }
+        public interface ICombatActions
+        {
+            void OnShoot(InputAction.CallbackContext context);
+        }
+        public interface ICameraActions
+        {
             void OnRotation(InputAction.CallbackContext context);
+        }
+        public interface IUtilsActions
+        {
+            void OnChangeTargetFPS(InputAction.CallbackContext context);
         }
     }
 }

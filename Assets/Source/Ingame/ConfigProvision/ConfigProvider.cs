@@ -2,9 +2,9 @@
 
 namespace Ingame.ConfigProvision
 {
-	public class ConfigProvider
+	public sealed class ConfigProvider
 	{
-		public HelicoptersConfig helicoptersConfig;
+		internal HelicoptersConfig helicoptersConfig;
 
 		public HelicoptersConfig HelicoptersConfig => helicoptersConfig;
 	}
