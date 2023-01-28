@@ -1,12 +1,13 @@
 ﻿using EcsTools.Convertion;
 using Leopotam.EcsLite;
+using NaughtyAttributes;
 using UnityEngine;
 
 namespace Ingame.Combat
 {
 	public sealed class UnguidedRocketSpawnerBaker : EcsMonoBaker
 	{
-		[SerializeField] private UnguidedRocketBaker unguidedRocketPrefab;
+		[Required, SerializeField] private UnguidedRocketBaker unguidedRocketPrefab;
 		[SerializeField] private Transform[] spawnOriginTransforms;
 
 		public override void Bake(int entity, EcsWorld world)

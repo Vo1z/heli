@@ -1,3 +1,4 @@
+using EcsTools.OneFrame;
 using Ingame.Camerawork;
 using Ingame.Combat;
 using Ingame.ConfigProvision;
@@ -42,10 +43,7 @@ public sealed class EcsSetup : MonoBehaviour
 		_inputActions = inputActions;
 		_configProvider = configProvider;
 		_diContainer = diContainer;
-	}
-
-	private void Awake()
-	{
+		
 		AddSystems();
 		AddInjections();
 		InitializeSystems();
@@ -122,8 +120,9 @@ public sealed class EcsSetup : MonoBehaviour
 			.Add(new RotateCameraAroundHelicopterSystem())
 			//Debugging
 			.Add(new ChangeTargetFpsSystem())
-			.Add(new PresentDebuggingInfoToUiSystem());
-
+			.Add(new PresentDebuggingInfoToUiSystem())
+			//One frame
+			.Add(new RemovePhysicsEventsSystem());
 
 		_fixUpdateSystems
 			//Helicopter

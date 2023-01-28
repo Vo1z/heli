@@ -153,6 +153,8 @@ GameObject:
   - component: {fileID: 3940207933770227538}
   - component: {fileID: 1388817988224949829}
   - component: {fileID: 6397438333412271680}
+  - component: {fileID: 4688135518507370285}
+  - component: {fileID: 8113058275028216336}
   - component: {fileID: 4918984384651793486}
   - component: {fileID: 4931559137874895893}
   m_Layer: 0
@@ -236,7 +238,7 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6458675438793567719}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
@@ -257,6 +259,34 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 0
+--- !u!114 &4688135518507370285
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6458675438793567719}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fd0a5e440fca4059a0e3d90b113e5683, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  entity: 0
+--- !u!114 &8113058275028216336
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6458675438793567719}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 30efb56766ab4836b40ba3131575fbb3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isSentOnEnter: 1
+  isSentOnStay: 0
+  isSentOnExit: 0
 --- !u!114 &4918984384651793486
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -281,3 +311,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1f111d5652344f028eba525b85439547, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rocketFlyingSpeed: 500
+  rocketSafeTime: 0.5
+  damageType: 4
+  explosionRadius: 5
+  amountOfDamage: 100

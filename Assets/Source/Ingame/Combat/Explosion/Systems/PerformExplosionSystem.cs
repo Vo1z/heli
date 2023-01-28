@@ -22,14 +22,14 @@ namespace Ingame.Combat
 		{
 			foreach (var entity in _performExplosionFilter.Value)
 			{
-				var explosionOriginTranform = _transformMdlPool.Value.Get(entity).transform;
+				var explosionOriginTransform = _transformMdlPool.Value.Get(entity).transform;
 				ref var explosionCmp = ref _explosionCmpPool.Value.Get(entity);
 
 				_performExplosionTagPool.Value.Del(entity);
 
 				int foundCollidersCount = Physics.OverlapSphereNonAlloc
 				(
-					explosionOriginTranform.position,
+					explosionOriginTransform.position,
 					explosionCmp.explosionRadius,
 					_sphereCastCollidersBuffer
 				);

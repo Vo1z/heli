@@ -1,18 +1,19 @@
-﻿using EcsTools.UnityModels;
+﻿using EcsTools.ObjectPooling;
+using EcsTools.UnityModels;
 using Leopotam.EcsLite;
 using Leopotam.EcsLite.Di;
 using UnityEngine;
 
 namespace Ingame.Combat 
 {
-	public struct MoveUnguidedRocketSystem : IEcsRunSystem
+	public readonly struct MoveUnguidedRocketSystem : IEcsRunSystem
 	{
-		private readonly EcsFilterInject<Inc<TransformModel, RigidBodyModel, UnguidedRocketComponent>> _rocketFilter;
+		private readonly EcsFilterInject<Inc<TransformModel, RigidBodyModel, UnguidedRocketComponent>, Exc<FreeToReuseEntityTag>> _rocketFilter;
 
 		private readonly EcsPoolInject<TransformModel> _transformMdlPool;
 		private readonly EcsPoolInject<RigidBodyModel> _rigidBodyMdlPool;
 		private readonly EcsPoolInject<UnguidedRocketComponent> _rocketCmpPool;
-
+		
 		public void Run(IEcsSystems systems)
 		{
 			foreach (var entity in _rocketFilter.Value)
