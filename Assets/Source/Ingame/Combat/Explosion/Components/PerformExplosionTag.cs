@@ -1,6 +1,6 @@
 ﻿namespace Ingame.Combat
 {
-	public struct RocketComponent
+	public struct PerformExplosionTag
 	{
 		
 	}

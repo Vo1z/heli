@@ -1,4 +1,4 @@
-﻿using EcsExtensions.Convertion;
+﻿using EcsTools.Convertion;
 using Leopotam.EcsLite;
 using NaughtyAttributes;
 using UnityEngine;

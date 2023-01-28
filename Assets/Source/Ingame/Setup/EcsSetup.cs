@@ -2,11 +2,13 @@ using Ingame.Camerawork;
 using Ingame.Combat;
 using Ingame.ConfigProvision;
 using Ingame.Debugging;
+using Ingame.Health;
 using Ingame.Helicopter;
 using Ingame.Input;
 using Ingame.UI.Debugging;
 using Leopotam.EcsLite;
 using Leopotam.EcsLite.Di;
+using EcsTools.Timer;
 using UnityEngine;
 using Zenject;
 
@@ -103,13 +105,19 @@ public sealed class EcsSetup : MonoBehaviour
 		_updateSystems
 			//Input 
 			.Add(new ReceiveInputSystem())
+			//Time
+			.Add(new IncrementTimerTimeSystem())
 			//Helicopter
 			.Add(new ConvertInputToHelicopterControlValuesSystem())
 			.Add(new CalculateHelicopterStatsSystem())
 			.Add(new RotateRotorSystem())
 			//Combat
-			.Add(new SpawnRocketsSystem())
-			.Add(new MoveRocketSystem())
+			.Add(new SpawnUnguidedRocketSystem())
+			.Add(new MoveUnguidedRocketSystem())
+			.Add(new ExplodeUnguidedRocketSystem())
+			.Add(new PerformExplosionSystem())
+			//Health
+			.Add(new ApplyDamageSystem())
 			//Camerawork
 			.Add(new RotateCameraAroundHelicopterSystem())
 			//Debugging

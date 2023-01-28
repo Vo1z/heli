@@ -1,6 +1,6 @@
-﻿using EcsExtensions.Convertion;
+﻿using EcsTools.Convertion;
 using Ingame.Tools;
-using EcsExtensions.UnityModels;
+using EcsTools.UnityModels;
 using Leopotam.EcsLite;
 using UnityEngine;
 

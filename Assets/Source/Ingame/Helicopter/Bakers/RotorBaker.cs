@@ -1,5 +1,5 @@
-﻿using EcsExtensions.Convertion;
-using EcsExtensions.UnityModels;
+﻿using EcsTools.Convertion;
+using EcsTools.UnityModels;
 using Leopotam.EcsLite;
 using UnityEngine;
 

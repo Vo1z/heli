@@ -1,8 +1,8 @@
-﻿using EcsExtensions.Convertion;
-using EcsExtensions.UnityModels;
+﻿using EcsTools.UnityModels;
+using EcsTools.Convertion;
 using Leopotam.EcsLite;
 
-namespace EcsExtensions.UnityModels
+namespace EcsTools.UnityModels
 {
 	public sealed class TransformModelBaker : EcsMonoBaker
 	{

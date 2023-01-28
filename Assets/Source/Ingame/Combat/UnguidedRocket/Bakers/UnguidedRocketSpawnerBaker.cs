@@ -1,21 +1,21 @@
-﻿using EcsExtensions.Convertion;
+﻿using EcsTools.Convertion;
 using Leopotam.EcsLite;
 using UnityEngine;
 
 namespace Ingame.Combat
 {
-	public sealed class RocketSpawnerBaker : EcsMonoBaker
+	public sealed class UnguidedRocketSpawnerBaker : EcsMonoBaker
 	{
-		[SerializeField] private RocketBaker rocketPrefab;
+		[SerializeField] private UnguidedRocketBaker unguidedRocketPrefab;
 		[SerializeField] private Transform[] spawnOriginTransforms;
 
 		public override void Bake(int entity, EcsWorld world)
 		{
-			var rocketSpawnerCmpPool = world.GetPool<RocketSpawnerComponent>();
+			var rocketSpawnerCmpPool = world.GetPool<UnguidedRocketSpawnerComponent>();
 			
 			ref var rocketSpawnerCmp = ref rocketSpawnerCmpPool.Add(entity);
 
-			rocketSpawnerCmp.rocketPrefab = rocketPrefab;
+			rocketSpawnerCmp.unguidedRocketPrefab = unguidedRocketPrefab;
 			rocketSpawnerCmp.spawnOriginTransforms = spawnOriginTransforms;
 		}
 	}

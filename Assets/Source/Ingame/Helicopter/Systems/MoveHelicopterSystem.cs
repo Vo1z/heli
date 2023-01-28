@@ -1,5 +1,5 @@
 ﻿using System.Runtime.CompilerServices;
-using EcsExtensions.UnityModels;
+using EcsTools.UnityModels;
 using Ingame.ConfigProvision;
 using Leopotam.EcsLite;
 using Leopotam.EcsLite.Di;

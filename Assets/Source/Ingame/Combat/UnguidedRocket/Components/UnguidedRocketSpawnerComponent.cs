@@ -2,9 +2,9 @@
 
 namespace Ingame.Combat
 {
-	public struct RocketSpawnerComponent
+	public struct UnguidedRocketSpawnerComponent
 	{
-		public RocketBaker rocketPrefab;
+		public UnguidedRocketBaker unguidedRocketPrefab;
 		public Transform[] spawnOriginTransforms;
 	}
 }

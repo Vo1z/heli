@@ -1,4 +1,4 @@
-﻿using EcsExtensions.UnityModels;
+﻿using EcsTools.UnityModels;
 using Ingame.Player;
 using Leopotam.EcsLite;
 using Leopotam.EcsLite.Di;

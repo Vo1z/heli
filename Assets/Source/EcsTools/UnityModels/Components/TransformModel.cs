@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace EcsExtensions.UnityModels
+namespace EcsTools.UnityModels
 {
 	public struct TransformModel
 	{

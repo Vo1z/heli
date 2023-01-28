@@ -6,15 +6,15 @@ using Zenject;
 
 namespace Ingame.Combat
 {
-	public struct SpawnRocketsSystem : IEcsRunSystem
+	public struct SpawnUnguidedRocketSystem : IEcsRunSystem
 	{
 		private readonly EcsCustomInject<DiContainer> _diContainer;
 
 		private readonly EcsFilterInject<Inc<InputComponent>> _inputCmpFilter;
-		private readonly EcsFilterInject<Inc<RocketSpawnerComponent>> _rocketSpawnerCmpFilter;
+		private readonly EcsFilterInject<Inc<UnguidedRocketSpawnerComponent>> _rocketSpawnerCmpFilter;
 		
 		private readonly EcsPoolInject<InputComponent> _inputCmpPool;
-		private readonly EcsPoolInject<RocketSpawnerComponent> _rocketSpawnerCmpPool;
+		private readonly EcsPoolInject<UnguidedRocketSpawnerComponent> _rocketSpawnerCmpPool;
 
 		public void Run(IEcsSystems systems)
 		{
@@ -29,12 +29,16 @@ namespace Ingame.Combat
 
 				foreach (var spawnOriginTransform in rocketSpawnerCmp.spawnOriginTransforms)
 				{
-					if(spawnOriginTransform == null)
+					if (spawnOriginTransform == null)
 						continue;
-					
-					var rocket = _diContainer.Value.InstantiatePrefab(rocketSpawnerCmp.rocketPrefab, spawnOriginTransform.position, Quaternion.LookRotation(spawnOriginTransform.forward), null);
-					
-					// rocket.transform.rotation = Quaternion.LookRotation(spawnOriginTransform.forward)
+
+					_diContainer.Value.InstantiatePrefab
+					(
+						rocketSpawnerCmp.unguidedRocketPrefab,
+						spawnOriginTransform.position,
+						Quaternion.LookRotation(spawnOriginTransform.forward),
+						null
+					);
 				}
 			}
 		}

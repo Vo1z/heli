@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace EcsExtensions.Physics
+namespace EcsTools.Physics
 {
 	public struct OnTriggerEnterRequest
 	{

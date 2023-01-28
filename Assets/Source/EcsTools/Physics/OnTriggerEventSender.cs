@@ -1,10 +1,9 @@
-﻿
-using EcsTools.ClassExtensions;
+﻿using EcsTools.ClassExtensions;
 using Leopotam.EcsLite;
 using UnityEngine;
 using Zenject;
 
-namespace EcsExtensions.Physics
+namespace EcsTools.Physics
 {
 	[RequireComponent(typeof(Collider))]
 	public sealed class OnTriggerEventSender : MonoBehaviour

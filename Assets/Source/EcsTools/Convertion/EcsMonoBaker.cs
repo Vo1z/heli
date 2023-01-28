@@ -1,7 +1,7 @@
 ﻿using Leopotam.EcsLite;
 using UnityEngine;
 
-namespace EcsExtensions.Convertion
+namespace EcsTools.Convertion
 {
 	[RequireComponent(typeof(ConvertToEcsEntity))]
 	public abstract class EcsMonoBaker : MonoBehaviour

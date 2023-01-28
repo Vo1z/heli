@@ -1,6 +1,6 @@
 ﻿using Cinemachine;
 
-namespace EcsExtensions.UnityModels
+namespace EcsTools.UnityModels
 {
 	public struct VirtualCameraModel
 	{

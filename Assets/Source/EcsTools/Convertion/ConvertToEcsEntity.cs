@@ -3,7 +3,7 @@ using Source.EcsExtensions.EntityReference;
 using UnityEngine;
 using Zenject;
 
-namespace EcsExtensions.Convertion
+namespace EcsTools.Convertion
 {
 	public sealed class ConvertToEcsEntity : MonoBehaviour
 	{
@@ -41,7 +41,7 @@ namespace EcsExtensions.Convertion
 			if(!TryGetComponent(out EcsEntityReference entityRef))
 				return;
 			
-			entityRef.Entity = entity;
+			entityRef.entity = entity;
 		}
 	}
 }
