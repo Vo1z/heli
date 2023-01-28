@@ -1,11 +1,11 @@
 ﻿using Ingame.Helicopter;
+using Ingame.Vfx;
 
 namespace Ingame.ConfigProvision
 {
 	public sealed class ConfigProvider
 	{
-		internal HelicoptersConfig helicoptersConfig;
-
-		public HelicoptersConfig HelicoptersConfig => helicoptersConfig;
+		public HelicoptersConfig helicoptersConfig;
+		public VfxConfig vfxConfig;
 	}
 }

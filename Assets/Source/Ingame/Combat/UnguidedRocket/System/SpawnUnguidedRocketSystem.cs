@@ -5,6 +5,7 @@ using EcsTools.UnityModels;
 using Leopotam.EcsLite;
 using Leopotam.EcsLite.Di;
 using Source.Ingame.Input;
+using Tools.ClassExtensions;
 using UnityEngine;
 using Zenject;
 
@@ -20,10 +21,10 @@ namespace Ingame.Combat
 		private readonly EcsFilterInject<Inc<UnguidedRocketSpawnerComponent>> _rocketSpawnerCmpFilter;
 		private readonly EcsPoolInject<UnguidedRocketSpawnerComponent> _rocketSpawnerCmpPool;
 		
-		private readonly EcsFilterInject<Inc<TransformModel, TimerComponent, UnguidedRocketComponent, FreeToReuseEntityTag>> _freeReusedRocketsFilter;
+		private readonly EcsFilterInject<Inc<TransformModel, TimerComponent, UnguidedRocketComponent, FreeToReuseTag>> _freeReusedRocketsFilter;
 		private readonly EcsPoolInject<TransformModel> _transformModelPool;
 		private readonly EcsPoolInject<UnguidedRocketComponent> _unguidedRocketCmp;
-		private readonly EcsPoolInject<FreeToReuseEntityTag> _freeToReuseEntityTagPool;
+		private readonly EcsPoolInject<FreeToReuseTag> _freeToReuseEntityTagPool;
 		private readonly EcsPoolInject<TimerComponent> _timerCmpPool;
 		
 		public void Run(IEcsSystems systems)

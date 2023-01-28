@@ -55,7 +55,7 @@ namespace Ingame.UI.Debugging
 				return -1f;
 
 			var heliRigidbody = _rigidbodyMdlPool.Value.Get(heliEntity).rigidbody;
-			var heliConfigData = _configProvider.Value.HelicoptersConfig.GetHelicopterConfigData(heliCmp.helicopterId);
+			var heliConfigData = _configProvider.Value.helicoptersConfig.GetHelicopterConfigData(heliCmp.helicopterId);
 			
 			var movementDirection = heliRigidbody.velocity;
 			movementDirection.y = 0f;

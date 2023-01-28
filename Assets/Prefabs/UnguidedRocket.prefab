@@ -158,7 +158,7 @@ GameObject:
   - component: {fileID: 4918984384651793486}
   - component: {fileID: 4931559137874895893}
   m_Layer: 0
-  m_Name: Rocket
+  m_Name: UnguidedRocket
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -312,7 +312,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rocketFlyingSpeed: 500
-  rocketSafeTime: 0.5
+  rocketSafeTime: 0.05
   damageType: 4
   explosionRadius: 5
   amountOfDamage: 100

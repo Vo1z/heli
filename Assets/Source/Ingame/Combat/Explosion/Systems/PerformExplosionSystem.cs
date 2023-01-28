@@ -1,5 +1,7 @@
-﻿using EcsTools.UnityModels;
+﻿using EcsTools.ClassExtensions;
+using EcsTools.UnityModels;
 using Ingame.Health;
+using Ingame.Vfx.Explosion;
 using Leopotam.EcsLite;
 using Leopotam.EcsLite.Di;
 using Source.EcsExtensions.EntityReference;
@@ -9,6 +11,8 @@ namespace Ingame.Combat
 {
 	public sealed class PerformExplosionSystem : IEcsRunSystem
 	{
+		private readonly EcsWorldInject _world;
+
 		private readonly EcsFilterInject<Inc<TransformModel, ExplosionComponent, PerformExplosionTag>> _performExplosionFilter;
 		private readonly EcsPoolInject<TransformModel> _transformMdlPool;
 		private readonly EcsPoolInject<ExplosionComponent> _explosionCmpPool;
@@ -26,6 +30,11 @@ namespace Ingame.Combat
 				ref var explosionCmp = ref _explosionCmpPool.Value.Get(entity);
 
 				_performExplosionTagPool.Value.Del(entity);
+				_world.Value.SendSignal(new SpawnExplosionVfxRequest
+				{
+					position = explosionOriginTransform.position,
+					damageType = explosionCmp.damageType
+				});
 
 				int foundCollidersCount = Physics.OverlapSphereNonAlloc
 				(

@@ -25,7 +25,7 @@ namespace Ingame.Helicopter
 				return;
 
 			ref var playerHeliCmp = ref _heliCmpPool.Value.Get(_playerHeliFilter.Value.GetFirstEntity());
-			var currentHeliConfigData = _configProvider.Value.HelicoptersConfig.GetHelicopterConfigData(playerHeliCmp.helicopterId);
+			var currentHeliConfigData = _configProvider.Value.helicoptersConfig.GetHelicopterConfigData(playerHeliCmp.helicopterId);
 			
 			foreach (var entity in _rotorCmpFilter.Value)
 			{

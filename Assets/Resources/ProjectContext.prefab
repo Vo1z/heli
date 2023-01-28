@@ -89,6 +89,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   helicoptersConfig: {fileID: 11400000, guid: 34dda7311af140b4c868ae75c00910a0, type: 2}
+  vfxConfig: {fileID: 11400000, guid: 8ee4ef17afec9b845ade63a25405f29b, type: 2}
 --- !u!1 &3102352393886876015
 GameObject:
   m_ObjectHideFlags: 0

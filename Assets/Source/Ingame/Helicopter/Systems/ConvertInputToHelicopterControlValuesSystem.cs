@@ -24,7 +24,7 @@ namespace Ingame.Helicopter
 			foreach (var heliEntity in _helicopterFilter.Value)
 			{
 				ref var heliCmp = ref _helicopterCmpPool.Value.Get(heliEntity);
-				var heliConfig = _configProvider.Value.HelicoptersConfig.GetHelicopterConfigData(heliCmp.helicopterId);
+				var heliConfig = _configProvider.Value.helicoptersConfig.GetHelicopterConfigData(heliCmp.helicopterId);
 
 				heliCmp.currentPitch = inputCmp.pitchInput * heliConfig.rotationResponsiveness;
 				heliCmp.currentYaw = inputCmp.yawInput * heliConfig.rotationResponsiveness;

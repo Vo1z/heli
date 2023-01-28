@@ -10,6 +10,7 @@ using Ingame.UI.Debugging;
 using Leopotam.EcsLite;
 using Leopotam.EcsLite.Di;
 using EcsTools.Timer;
+using Ingame.Vfx.Explosion;
 using UnityEngine;
 using Zenject;
 
@@ -118,6 +119,9 @@ public sealed class EcsSetup : MonoBehaviour
 			.Add(new ApplyDamageSystem())
 			//Camerawork
 			.Add(new RotateCameraAroundHelicopterSystem())
+			//VFX
+			.Add(new SpawnExplosionVfxSystem())
+			.Add(new PutExplosionVfxBackToPoolSystem())
 			//Debugging
 			.Add(new ChangeTargetFpsSystem())
 			.Add(new PresentDebuggingInfoToUiSystem())

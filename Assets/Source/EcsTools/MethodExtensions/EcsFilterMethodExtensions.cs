@@ -2,7 +2,7 @@
 
 namespace EcsTools.ClassExtensions
 {
-	public static class EcsFilterExtensions
+	public static partial class EcsMethodExtensions
 	{
 		public static bool IsEmpty(this EcsFilter ecsFilter)
 		{

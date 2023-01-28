@@ -17,7 +17,7 @@ namespace Ingame.UI.Debugging
 		[Inject]
 		private void Construct(ConfigProvider configProvider)
 		{
-			_helicoptersConfig = configProvider.HelicoptersConfig;
+			_helicoptersConfig = configProvider.helicoptersConfig;
 		}
 		
 		public void SetFpsContent(int fps)

@@ -1,10 +1,10 @@
-﻿using EcsTools.ClassExtensions;
-using EcsTools.ObjectPooling;
+﻿using EcsTools.ObjectPooling;
 using EcsTools.Physics;
 using EcsTools.Timer;
 using Leopotam.EcsLite;
 using Leopotam.EcsLite.Di;
 using Source.EcsExtensions.EntityReference;
+using Tools.ClassExtensions;
 
 namespace Ingame.Combat
 {
@@ -15,7 +15,7 @@ namespace Ingame.Combat
 		private readonly EcsPoolInject<UnguidedRocketComponent> _rocketPool;
 		private readonly EcsPoolInject<ExplosionComponent> _explosionCmpPool;
 		private readonly EcsPoolInject<PerformExplosionTag> _performExplosionTagPool;
-		private readonly EcsPoolInject<FreeToReuseEntityTag> _freeToReuseTagPool;
+		private readonly EcsPoolInject<FreeToReuseTag> _freeToReuseTagPool;
 		private readonly EcsPoolInject<TimerComponent> _timerCompPool;
 
 		public void Run(IEcsSystems systems)

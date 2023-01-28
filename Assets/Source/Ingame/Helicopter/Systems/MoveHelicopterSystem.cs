@@ -36,7 +36,7 @@ namespace Ingame.Helicopter
 				ref var helicopterCmp = ref _helicopterCmpPool.Value.Get(helicopterEntity);
 				var heliTransform = _transformMdlPool.Value.Get(helicopterEntity).transform;
 				var heliRigidbody = _rigidbodyMdlPool.Value.Get(helicopterEntity).rigidbody;
-				var heliConfigData = _configProvider.Value.HelicoptersConfig.GetHelicopterConfigData(helicopterCmp.helicopterId);
+				var heliConfigData = _configProvider.Value.helicoptersConfig.GetHelicopterConfigData(helicopterCmp.helicopterId);
 
 				ApplyControls(heliTransform, heliRigidbody, helicopterCmp, heliConfigData);
 				ApplyNormalization(heliRigidbody, heliConfigData);

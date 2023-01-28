@@ -2,7 +2,7 @@
 
 namespace EcsTools.ClassExtensions
 {
-	public static class EcsWorldMethodExtensions
+	public static partial class EcsMethodExtensions
 	{
 		public static void SendSignal<T>(this EcsWorld world) where T : struct
 		{

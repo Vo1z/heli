@@ -17,6 +17,6 @@ MonoBehaviour:
     throttleGainSpeed: 30000
     maxThrottle: 60000
     rotationResponsiveness: 25000
-    minMaxSpeedForNormalization: {x: 30, y: 130}
+    minMaxSpeedForNormalization: {x: 30, y: 150}
     minNormalizationDamping: 0.35
     additionalGravitation: 8000

@@ -1,8 +1,8 @@
 ﻿using UnityEngine;
 
-namespace EcsTools.ClassExtensions
+namespace Tools.ClassExtensions
 {
-	public static class UnityComponentsMethodExtensions
+	public static partial class UnityMethodExtensions
 	{
 		public static void SetGoInactive(this Component component)
 		{

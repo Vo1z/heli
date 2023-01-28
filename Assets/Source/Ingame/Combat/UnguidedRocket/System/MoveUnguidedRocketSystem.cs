@@ -8,7 +8,7 @@ namespace Ingame.Combat
 {
 	public readonly struct MoveUnguidedRocketSystem : IEcsRunSystem
 	{
-		private readonly EcsFilterInject<Inc<TransformModel, RigidBodyModel, UnguidedRocketComponent>, Exc<FreeToReuseEntityTag>> _rocketFilter;
+		private readonly EcsFilterInject<Inc<TransformModel, RigidBodyModel, UnguidedRocketComponent>, Exc<FreeToReuseTag>> _rocketFilter;
 
 		private readonly EcsPoolInject<TransformModel> _transformMdlPool;
 		private readonly EcsPoolInject<RigidBodyModel> _rigidBodyMdlPool;
