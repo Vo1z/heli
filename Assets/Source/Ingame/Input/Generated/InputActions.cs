@@ -290,7 +290,7 @@ namespace Ingame.Input
                 {
                     ""name"": ""positive"",
                     ""id"": ""54c43770-16ce-4eb7-945d-de0b980c826a"",
-                    ""path"": ""<Keyboard>/space"",
+                    ""path"": ""<Keyboard>/shift"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -352,6 +352,17 @@ namespace Ingame.Input
                     ""name"": """",
                     ""id"": ""0aed9262-f813-4ec5-ad7a-b44ec3ee9466"",
                     ""path"": ""<Mouse>/leftButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Shoot"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""e3b40299-8cdb-48d7-a25b-6aafd5ca26b6"",
+                    ""path"": ""<Keyboard>/space"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -450,6 +461,15 @@ namespace Ingame.Input
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""ChangeControlsType"",
+                    ""type"": ""Button"",
+                    ""id"": ""8c0e49b7-a032-4f2b-adf2-c65b72380b1c"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -466,19 +486,8 @@ namespace Ingame.Input
                 },
                 {
                     ""name"": """",
-                    ""id"": ""40a1aa66-c96f-4f5b-8b67-bd09c07629d9"",
-                    ""path"": ""<Gamepad>/start"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""ChangeTargetFPS"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
                     ""id"": ""795bcab4-aeaf-47ec-adb2-beccbfc91a32"",
-                    ""path"": ""<Keyboard>/f1"",
+                    ""path"": ""<Keyboard>/f2"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -683,6 +692,28 @@ namespace Ingame.Input
                     ""action"": ""XboxGamepadSchemeDetection"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""b028ba2a-e232-42fe-bef1-0c91b991873f"",
+                    ""path"": ""<Gamepad>/start"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ChangeControlsType"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""54201879-b706-4c6a-9b89-57ff558ceb36"",
+                    ""path"": ""<Keyboard>/f1"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ChangeControlsType"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -707,6 +738,7 @@ namespace Ingame.Input
             m_Utils_ReloadLevel = m_Utils.FindAction("ReloadLevel", throwIfNotFound: true);
             m_Utils_KeyboardSchemeDetection = m_Utils.FindAction("KeyboardSchemeDetection", throwIfNotFound: true);
             m_Utils_XboxGamepadSchemeDetection = m_Utils.FindAction("XboxGamepadSchemeDetection", throwIfNotFound: true);
+            m_Utils_ChangeControlsType = m_Utils.FindAction("ChangeControlsType", throwIfNotFound: true);
         }
 
         public void Dispose()
@@ -893,6 +925,7 @@ namespace Ingame.Input
         private readonly InputAction m_Utils_ReloadLevel;
         private readonly InputAction m_Utils_KeyboardSchemeDetection;
         private readonly InputAction m_Utils_XboxGamepadSchemeDetection;
+        private readonly InputAction m_Utils_ChangeControlsType;
         public struct UtilsActions
         {
             private @InputActions m_Wrapper;
@@ -901,6 +934,7 @@ namespace Ingame.Input
             public InputAction @ReloadLevel => m_Wrapper.m_Utils_ReloadLevel;
             public InputAction @KeyboardSchemeDetection => m_Wrapper.m_Utils_KeyboardSchemeDetection;
             public InputAction @XboxGamepadSchemeDetection => m_Wrapper.m_Utils_XboxGamepadSchemeDetection;
+            public InputAction @ChangeControlsType => m_Wrapper.m_Utils_ChangeControlsType;
             public InputActionMap Get() { return m_Wrapper.m_Utils; }
             public void Enable() { Get().Enable(); }
             public void Disable() { Get().Disable(); }
@@ -922,6 +956,9 @@ namespace Ingame.Input
                     @XboxGamepadSchemeDetection.started -= m_Wrapper.m_UtilsActionsCallbackInterface.OnXboxGamepadSchemeDetection;
                     @XboxGamepadSchemeDetection.performed -= m_Wrapper.m_UtilsActionsCallbackInterface.OnXboxGamepadSchemeDetection;
                     @XboxGamepadSchemeDetection.canceled -= m_Wrapper.m_UtilsActionsCallbackInterface.OnXboxGamepadSchemeDetection;
+                    @ChangeControlsType.started -= m_Wrapper.m_UtilsActionsCallbackInterface.OnChangeControlsType;
+                    @ChangeControlsType.performed -= m_Wrapper.m_UtilsActionsCallbackInterface.OnChangeControlsType;
+                    @ChangeControlsType.canceled -= m_Wrapper.m_UtilsActionsCallbackInterface.OnChangeControlsType;
                 }
                 m_Wrapper.m_UtilsActionsCallbackInterface = instance;
                 if (instance != null)
@@ -938,6 +975,9 @@ namespace Ingame.Input
                     @XboxGamepadSchemeDetection.started += instance.OnXboxGamepadSchemeDetection;
                     @XboxGamepadSchemeDetection.performed += instance.OnXboxGamepadSchemeDetection;
                     @XboxGamepadSchemeDetection.canceled += instance.OnXboxGamepadSchemeDetection;
+                    @ChangeControlsType.started += instance.OnChangeControlsType;
+                    @ChangeControlsType.performed += instance.OnChangeControlsType;
+                    @ChangeControlsType.canceled += instance.OnChangeControlsType;
                 }
             }
         }
@@ -963,6 +1003,7 @@ namespace Ingame.Input
             void OnReloadLevel(InputAction.CallbackContext context);
             void OnKeyboardSchemeDetection(InputAction.CallbackContext context);
             void OnXboxGamepadSchemeDetection(InputAction.CallbackContext context);
+            void OnChangeControlsType(InputAction.CallbackContext context);
         }
     }
 }

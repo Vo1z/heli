@@ -17,6 +17,7 @@ MonoBehaviour:
     m_values:
     - {fileID: 3717249759936113755, guid: 20aba91b44aa31945be4ab3d0fd42c3e, type: 3}
   perSceneMaterialConfigurations:
+  - requireHelicopterPositionMaterials: []
   - requireHelicopterPositionMaterials:
     - {fileID: 2100000, guid: 745225dc0ffb88f4084ad7befff6c516, type: 2}
     - {fileID: 2100000, guid: e845cf1c593d43d40b1f8d979516515b, type: 2}

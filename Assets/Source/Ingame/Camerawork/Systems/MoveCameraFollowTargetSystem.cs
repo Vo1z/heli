@@ -15,6 +15,9 @@ namespace Ingame.Camerawork
 		
 		public void Run(IEcsSystems systems)
 		{
+			if(_playerFilter.Value.IsEmpty() || _followTargetTagFilter.Value.IsEmpty())
+				return;
+			
 			int playerEntity = _playerFilter.Value.GetFirstEntity();
 			ref var playerTransformCmp = ref _transformMdlPool.Value.Get(playerEntity);
 			

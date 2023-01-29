@@ -20,6 +20,7 @@ namespace Source.Ingame.Input
 		//Utils
 		public bool changeFpsInput;
 		public bool reloadLevel;
+		public bool changeContolsType;
 
 		public bool isInputDeviceTypeChangedThisFrame;
 		public InputDeviceType currentInputDeviceType;

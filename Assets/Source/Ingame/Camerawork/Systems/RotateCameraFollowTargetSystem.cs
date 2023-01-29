@@ -1,6 +1,7 @@
 ﻿using EcsTools.UnityModels;
 using EcsTools.ClassExtensions;
 using EcsTools.Timer;
+using Ingame.Input;
 using Ingame.Player;
 using Ingame.Settings;
 using Leopotam.EcsLite;
@@ -21,6 +22,7 @@ namespace Ingame.Camerawork
 		private readonly EcsPoolInject<TimerComponent> _timerCmpPool;
 		
 		private readonly EcsFilterInject<Inc<InputComponent>> _inputFilter;
+		private readonly EcsPoolInject<InputComponent> _inputCmpPool;
 
 		public void PostRun(IEcsSystems systems)
 		{
@@ -59,16 +61,17 @@ namespace Ingame.Camerawork
 			}
 
 			followTargetTimerCmp.timePassed = 0f;
+
+			float sensitivityX = inputCmp.currentInputDeviceType == InputDeviceType.Keyboard ? settingsCmp.mouseSettings.sensitivityX : settingsCmp.gamepadSettings.sensitivityX;
+			float sensitivityY = inputCmp.currentInputDeviceType == InputDeviceType.Keyboard ? settingsCmp.mouseSettings.sensitivityY : settingsCmp.gamepadSettings.sensitivityY;
 			
-			followTargetTransform.Rotate(Vector3.up, inputCmp.rotationInput.x * settingsCmp.gamepadSettings.sensitivityX * Time.deltaTime);
-			followTargetTransform.Rotate(Vector3.right, -inputCmp.rotationInput.y * settingsCmp.gamepadSettings.sensitivityY * Time.deltaTime);
+			followTargetTransform.Rotate(Vector3.up, inputCmp.rotationInput.x * sensitivityX * Time.deltaTime);
+			followTargetTransform.Rotate(Vector3.right, -inputCmp.rotationInput.y * sensitivityY * Time.deltaTime);
 
 			var targetLocalEulerAngles = followTargetTransform.localEulerAngles;
 			targetLocalEulerAngles.z = 0f;
 
 			followTargetTransform.localEulerAngles = targetLocalEulerAngles;
 		}
-
-		private readonly EcsPoolInject<InputComponent> _inputCmpPool;
 	}
 }

@@ -3,7 +3,6 @@ using Ingame.Health;
 using Ingame.Vfx.Explosion;
 using NaughtyAttributes;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 namespace Ingame.Vfx
 {
@@ -21,7 +20,7 @@ namespace Ingame.Vfx
 
 		public PerSceneMaterialConfiguration GetSceneMaterialConfiguration(int sceneIndex)
 		{
-			if (sceneIndex < 0 || sceneIndex > perSceneMaterialConfigurations.Length)
+			if (sceneIndex < 0 || sceneIndex >= perSceneMaterialConfigurations.Length)
 			{
 				Debug.LogError($"Incorrect {nameof(sceneIndex)} ({sceneIndex}) argument. No configuration under this index exists, returning default value");
 				return  perSceneMaterialConfigurations[0];

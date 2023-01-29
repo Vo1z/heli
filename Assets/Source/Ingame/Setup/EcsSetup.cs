@@ -147,11 +147,15 @@ public sealed class EcsSetup : MonoBehaviour
 			.Add(new SetHelicopterPositionToTheMaterialsSystem())
 			//Debugging
 			.Add(new ChangeTargetFpsSystem())
+			.Add(new ChangeControlsTypeSystem())
+			.Add(new ReloadLevelSystem())
 			.Add(new PresentDebuggingInfoToUiSystem())
 			//One frame
 			.Add(new RemovePhysicsEventsSystem());
 
-		// _lateUpdateSystems
+		_lateUpdateSystems
+			//Level management
+			.Add(new ChangeLevelSystem());
 
 
 		_fixUpdateSystems

@@ -31,6 +31,7 @@ namespace Ingame.Input
 		
 		private InputAction _changeTargetFpsInputAction;
 		private InputAction _reloadLevelInputAction;
+		private InputAction _changeControlsTypeInputAction;
 		
 		private InputAction _keyboardSchemeDetectionInputAction;
 		private InputAction _xboxGamepadSchemeDetectionInputAction;
@@ -85,6 +86,7 @@ namespace Ingame.Input
 		{
 			_changeTargetFpsInputAction = _inputActions.Value.Utils.ChangeTargetFPS;
 			_reloadLevelInputAction = _inputActions.Value.Utils.ReloadLevel;
+			_changeControlsTypeInputAction = _inputActions.Value.Utils.ChangeControlsType;
 
 			_keyboardSchemeDetectionInputAction = _inputActions.Value.Utils.KeyboardSchemeDetection;
 			_xboxGamepadSchemeDetectionInputAction = _inputActions.Value.Utils.XboxGamepadSchemeDetection;
@@ -114,6 +116,7 @@ namespace Ingame.Input
 		{
 			inputCmp.changeFpsInput = _changeTargetFpsInputAction.WasPerformedThisFrame();
 			inputCmp.reloadLevel = _reloadLevelInputAction.WasPerformedThisFrame();
+			inputCmp.changeContolsType = _changeControlsTypeInputAction.WasPerformedThisFrame();
 
 			//Detection of current input device type
 			inputCmp.isInputDeviceTypeChangedThisFrame = false;

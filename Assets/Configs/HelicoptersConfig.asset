@@ -19,7 +19,7 @@ MonoBehaviour:
     hcoreRotationResponsiveness: 25000
     hcoreAdditionalGravitation: 6000
     casualRotationAngle: 70
-    casualRotationDamping: 0.4
+    casualRotationDamping: 0.5
     casualFlyForce: 80000
     casualYawRotationSpeed: 60000
     casualThrottleForce: 20
