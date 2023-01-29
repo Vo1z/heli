@@ -1,7 +1,7 @@
 ﻿using EcsTools.Convertion;
-using Ingame.Tools;
 using EcsTools.UnityModels;
 using Leopotam.EcsLite;
+using Tools.HelicopterAttributte;
 using UnityEngine;
 
 namespace Ingame.Helicopter

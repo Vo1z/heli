@@ -180,7 +180,7 @@ namespace Ingame.Input
                 {
                     ""name"": ""negative"",
                     ""id"": ""07895e9f-a999-4122-ad27-446f026f18a4"",
-                    ""path"": ""<Gamepad>/rightStick/left"",
+                    ""path"": ""<Gamepad>/leftShoulder"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -191,7 +191,7 @@ namespace Ingame.Input
                 {
                     ""name"": ""positive"",
                     ""id"": ""ef5f98ec-9c3b-47dc-bc38-6d99d4ae26b3"",
-                    ""path"": ""<Gamepad>/rightStick/right"",
+                    ""path"": ""<Gamepad>/rightShoulder"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -312,7 +312,7 @@ namespace Ingame.Input
                 {
                     ""name"": ""negative"",
                     ""id"": ""b3b5c610-da15-4cca-85aa-cf57a3b73141"",
-                    ""path"": ""<Gamepad>/leftShoulder"",
+                    ""path"": ""<Gamepad>/buttonSouth"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -323,7 +323,7 @@ namespace Ingame.Input
                 {
                     ""name"": ""positive"",
                     ""id"": ""e8b79790-fbe0-486a-8d41-f56bf1cb3a9b"",
-                    ""path"": ""<Gamepad>/rightShoulder"",
+                    ""path"": ""<Gamepad>/buttonNorth"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -393,6 +393,17 @@ namespace Ingame.Input
                     ""path"": ""<Mouse>/delta"",
                     ""interactions"": """",
                     ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Rotation"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""df5cad25-f812-42f6-9bfb-067c2f093c3f"",
+                    ""path"": ""<Gamepad>/rightStick"",
+                    ""interactions"": """",
+                    ""processors"": ""ScaleVector2(x=100,y=100)"",
                     ""groups"": """",
                     ""action"": ""Rotation"",
                     ""isComposite"": false,

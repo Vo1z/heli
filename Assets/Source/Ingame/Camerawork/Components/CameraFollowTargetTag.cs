@@ -1,6 +1,6 @@
 ﻿namespace Ingame.Camerawork
 {
-	public struct MainCameraTag
+	public struct CameraFollowTargetTag
 	{
 		
 	}

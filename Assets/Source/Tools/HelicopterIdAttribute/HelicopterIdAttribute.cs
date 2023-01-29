@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Ingame.Tools
+namespace Tools.HelicopterAttributte
 {
     public sealed class HelicopterIdAttribute : PropertyAttribute
     {

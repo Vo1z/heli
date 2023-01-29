@@ -1,3 +1,4 @@
+using System;
 using EcsTools.OneFrame;
 using Ingame.Camerawork;
 using Ingame.Combat;
@@ -10,6 +11,7 @@ using Ingame.UI.Debugging;
 using Leopotam.EcsLite;
 using Leopotam.EcsLite.Di;
 using EcsTools.Timer;
+using EcsTools.UnityModels;
 using Ingame.Vfx.Explosion;
 using UnityEngine;
 using Zenject;
@@ -22,6 +24,7 @@ public sealed class EcsSetup : MonoBehaviour
 {
 	private EcsWorld _world;
 	private EcsSystems _updateSystems;
+	private EcsSystems _lateUpdateSystems;
 	private EcsSystems _fixUpdateSystems;
 #if UNITY_EDITOR
 	private EcsSystems _editorSystems;
@@ -36,6 +39,7 @@ public sealed class EcsSetup : MonoBehaviour
 	{
 		_world = world;
 		_updateSystems = new EcsSystems(world);
+		_lateUpdateSystems = new EcsSystems(world);
 		_fixUpdateSystems = new EcsSystems(world);
 #if UNITY_EDITOR
 		_editorSystems = new EcsSystems(_world);
@@ -59,6 +63,11 @@ public sealed class EcsSetup : MonoBehaviour
 #endif
 	}
 
+	private void LateUpdate()
+	{
+		_lateUpdateSystems.Run();
+	}
+
 	private void FixedUpdate()
 	{
 		_fixUpdateSystems.Run();
@@ -73,6 +82,9 @@ public sealed class EcsSetup : MonoBehaviour
 		
 		_updateSystems.Destroy();
 		_updateSystems = null;
+		
+		_lateUpdateSystems.Destroy();
+		_lateUpdateSystems = null;
 		
 		_fixUpdateSystems.Destroy();
 		_fixUpdateSystems = null;
@@ -89,6 +101,12 @@ public sealed class EcsSetup : MonoBehaviour
 			.Inject(_configProvider)
 			.Inject(_diContainer);
 
+		_lateUpdateSystems
+			.Inject(_world)
+			.Inject(_inputActions)
+			.Inject(_configProvider)
+			.Inject(_diContainer);
+		
 		_fixUpdateSystems
 			.Inject(_world)
 			.Inject(_inputActions)
@@ -102,6 +120,8 @@ public sealed class EcsSetup : MonoBehaviour
 		_editorSystems.Add(new EcsWorldDebugSystem());
 #endif
 		_updateSystems
+			//Initialization
+			.Add(new InitializeUnityModelsSystem())
 			//Input 
 			.Add(new ReceiveInputSystem())
 			//Time
@@ -118,7 +138,7 @@ public sealed class EcsSetup : MonoBehaviour
 			//Health
 			.Add(new ApplyDamageSystem())
 			//Camerawork
-			.Add(new RotateCameraAroundHelicopterSystem())
+			.Add(new RotateCameraFollowTargetSystem())
 			//VFX
 			.Add(new SpawnExplosionVfxSystem())
 			.Add(new PutExplosionVfxBackToPoolSystem())
@@ -128,9 +148,15 @@ public sealed class EcsSetup : MonoBehaviour
 			//One frame
 			.Add(new RemovePhysicsEventsSystem());
 
+		// _lateUpdateSystems
+			
+		
 		_fixUpdateSystems
 			//Helicopter
-			.Add(new MoveHelicopterSystem());
+			.Add(new MoveHelicopterSystem())
+			//Camerawork
+			.Add(new MoveCameraFollowTargetSystem());
+			
 
 	}
 	
@@ -141,6 +167,7 @@ public sealed class EcsSetup : MonoBehaviour
 #endif
 		
 		_updateSystems.Init();
+		_lateUpdateSystems.Init();
 		_fixUpdateSystems.Init();
 	}
 }

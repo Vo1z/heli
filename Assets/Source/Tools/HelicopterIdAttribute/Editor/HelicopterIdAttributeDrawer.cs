@@ -1,9 +1,8 @@
-﻿using System;
-using Ingame.Helicopter;
+﻿using Ingame.Helicopter;
 using UnityEditor;
 using UnityEngine;
 
-namespace Ingame.Tools
+namespace Tools.HelicopterAttributte
 {
 	[CustomPropertyDrawer(typeof(HelicopterIdAttribute))]
 	public sealed class HelicopterIdAttributeDrawer : PropertyDrawer
