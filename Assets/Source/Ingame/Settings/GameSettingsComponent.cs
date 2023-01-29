@@ -23,6 +23,7 @@ namespace Ingame.Settings
 		public struct GameSettings
 		{
 			public float resetCameraPosDelay;
+			public bool isHardcoreControlSchemeApplied;
 		}
 
 		public MouseSettings mouseSettings;

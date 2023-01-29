@@ -2,6 +2,7 @@
 using EcsTools.ClassExtensions;
 using Ingame.ConfigProvision;
 using Ingame.Helicopter;
+using Ingame.Settings;
 using Leopotam.EcsLite;
 using Leopotam.EcsLite.Di;
 using UnityEngine;
@@ -13,6 +14,9 @@ namespace Ingame.UI.Debugging
 		private readonly EcsWorldInject _world;
 		private readonly EcsCustomInject<ConfigProvider> _configProvider;
 
+		private readonly EcsFilterInject<Inc<GameSettingsComponent>> _gameSettingsFilter;
+		private readonly EcsPoolInject<GameSettingsComponent> _gameSettingsCmpPool;
+		
 		private readonly EcsFilterInject<Inc<UiDebuggingViewModel>> _uiDebuggingViewMdlFilter;
 		private readonly EcsPoolInject<UiDebuggingViewModel> _uiDebuggingViewMdlPool;
 
@@ -45,8 +49,10 @@ namespace Ingame.UI.Debugging
 
 			int heliEntity = _heliCmpFilter.Value.GetFirstEntity();
 			ref var heliCmp = ref _heliCmpPool.Value.Get(heliEntity);
+			ref var settingsCmp = ref _gameSettingsCmpPool.Value.GetFirstComponent(_gameSettingsFilter.Value);
+			bool isHardcoreControlScheme = settingsCmp.gameSettings.isHardcoreControlSchemeApplied;
 			
-			uiDebuggingView.SetHelicopterContent(heliCmp, GetVelocity(heliEntity), GetHeliNormalizationDumping(heliEntity, heliCmp));
+			uiDebuggingView.SetHelicopterContent(heliCmp, GetVelocity(heliEntity), GetHeliNormalizationDumping(heliEntity, heliCmp), isHardcoreControlScheme);
 		}
 
 		private float GetHeliNormalizationDumping(in int heliEntity, in HelicopterComponent heliCmp)

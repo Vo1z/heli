@@ -25,13 +25,19 @@ namespace Ingame.UI.Debugging
 			fpsText.SetText($"FPS: {fps}");
 		}
 
-		public void SetHelicopterContent(in HelicopterComponent heliCmp, in Vector3 velocity, float normalizationDumping)
+		public void SetHelicopterContent(in HelicopterComponent heliCmp, in Vector3 velocity, float normalizationDumping, bool isHardcoreScheme)
 		{
 			var heliConfigData = _helicoptersConfig.GetHelicopterConfigData(heliCmp.helicopterId);
-			float throttleInPercentage = Mathf.RoundToInt(Mathf.InverseLerp(0, heliConfigData.maxThrottle, heliCmp.currentThrottle) * 100f);
-
+			float throttleInPercentage = isHardcoreScheme ? 
+				Mathf.RoundToInt(Mathf.InverseLerp(0, heliConfigData.hcoreMaxThrottle, heliCmp.currentThrottle) * 100f)
+				:
+				Mathf.RoundToInt(Mathf.InverseLerp(-heliConfigData.casualThrottleForce, heliConfigData.casualThrottleForce, heliCmp.currentThrottle) * 100f);
+			string controlSchemeTypeText = isHardcoreScheme ? "hardcore" : "casual";
+			
 			string heliContent = $"ID: {heliCmp.helicopterId}\n" +
 			                     $"Name: {heliConfigData.helicopterName}\n" +
+			                     "===========================\n" +
+			                     $"Control scheme: {controlSchemeTypeText}\n" +
 			                     "===========================\n" +
 			                     $"Velocity: {velocity}\n" +
 			                     $"Normalization: {normalizationDumping}\n" +
@@ -39,7 +45,7 @@ namespace Ingame.UI.Debugging
 			                     $"Throttle: {throttleInPercentage}% ({heliCmp.currentThrottle})\n" +
 			                     $"SPEED: {heliCmp.currentSpeed}\n" +
 			                     $"ALT: {heliCmp.currentAltitude}";
-			
+
 			helicopterInfoText.SetText(heliContent);
 		}
 	}

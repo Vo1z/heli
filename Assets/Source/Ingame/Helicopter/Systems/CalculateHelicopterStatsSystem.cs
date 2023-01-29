@@ -1,12 +1,13 @@
 ﻿using EcsTools.UnityModels;
 using Ingame.Player;
+using Ingame.Settings;
 using Leopotam.EcsLite;
 using Leopotam.EcsLite.Di;
 using UnityEngine;
 
 namespace Ingame.Helicopter
 {
-	public struct CalculateHelicopterStatsSystem : IEcsRunSystem
+	public readonly struct CalculateHelicopterStatsSystem : IEcsRunSystem
 	{
 		private readonly EcsFilterInject<Inc<TransformModel, RigidBodyModel, HelicopterComponent, PlayerTag>> _playerHeliFilter;
 		private readonly EcsPoolInject<TransformModel> _transformMdlPool;

@@ -21,3 +21,4 @@ MonoBehaviour:
       sensitivityY: 200
     gameSettings:
       resetCameraPosDelay: 1
+      isHardcoreControlSchemeApplied: 1
