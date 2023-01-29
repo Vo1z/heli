@@ -27,12 +27,17 @@ namespace Ingame.Input
 		private InputAction _rotationInputAction;
 
 		//Utils
-		private InputAction _changeTargetFpsInputAction;
+		private InputDeviceType _currentInputDevice;
 		
+		private InputAction _changeTargetFpsInputAction;
+		private InputAction _reloadLevelInputAction;
+		
+		private InputAction _keyboardSchemeDetectionInputAction;
+		private InputAction _xboxGamepadSchemeDetectionInputAction;
+
 		public void PreInit(IEcsSystems systems)
 		{
 			_inputActions.Value.Enable();
-
 
 			SetUpHelicopterInput();
 			SetUpCombatInput();
@@ -57,6 +62,7 @@ namespace Ingame.Input
 			ReceiveUtilsInput(ref inputCmp);
 		}
 
+#region Setup
 		private void SetUpHelicopterInput()
 		{
 			_pitchInputAction = _inputActions.Value.Helicopter.Pitch;
@@ -78,8 +84,14 @@ namespace Ingame.Input
 		private void SetupUtilsInput()
 		{
 			_changeTargetFpsInputAction = _inputActions.Value.Utils.ChangeTargetFPS;
-		}
+			_reloadLevelInputAction = _inputActions.Value.Utils.ReloadLevel;
 
+			_keyboardSchemeDetectionInputAction = _inputActions.Value.Utils.KeyboardSchemeDetection;
+			_xboxGamepadSchemeDetectionInputAction = _inputActions.Value.Utils.XboxGamepadSchemeDetection;
+		}
+#endregion Setup
+
+#region ReceiveInput
 		private void ReceiveHelicopterInput(ref InputComponent inputCmp)
 		{
 			inputCmp.pitchInput = _pitchInputAction.ReadValue<float>();
@@ -101,6 +113,24 @@ namespace Ingame.Input
 		private void ReceiveUtilsInput(ref InputComponent inputCmp)
 		{
 			inputCmp.changeFpsInput = _changeTargetFpsInputAction.WasPerformedThisFrame();
+			inputCmp.reloadLevel = _reloadLevelInputAction.WasPerformedThisFrame();
+
+			//Detection of current input device type
+			inputCmp.isInputDeviceTypeChangedThisFrame = false;
+			
+			if (_keyboardSchemeDetectionInputAction.WasPerformedThisFrame())
+				_currentInputDevice = InputDeviceType.Keyboard;
+			else if (_xboxGamepadSchemeDetectionInputAction.WasPerformedThisFrame())
+				_currentInputDevice = InputDeviceType.XboxGamepad;
+
+			if (_currentInputDevice == inputCmp.currentInputDeviceType)
+				return;
+
+			Debug.Log($"Is changed to {_currentInputDevice}");
+			
+			inputCmp.isInputDeviceTypeChangedThisFrame = true;
+			inputCmp.currentInputDeviceType = _currentInputDevice;
 		}
+#endregion ReceiveInput
 	}
 }

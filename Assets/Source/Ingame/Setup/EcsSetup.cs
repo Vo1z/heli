@@ -12,7 +12,10 @@ using Leopotam.EcsLite;
 using Leopotam.EcsLite.Di;
 using EcsTools.Timer;
 using EcsTools.UnityModels;
+using Ingame.LevelMamengement;
+using Ingame.Settings;
 using Ingame.Vfx.Explosion;
+using Ingame.Vfx.Helicopter;
 using UnityEngine;
 using Zenject;
 
@@ -75,11 +78,6 @@ public sealed class EcsSetup : MonoBehaviour
 
 	private void OnDestroy()
 	{
-#if UNITY_EDITOR
-		_editorSystems.Destroy();
-		_editorSystems = null;
-#endif
-		
 		_updateSystems.Destroy();
 		_updateSystems = null;
 		
@@ -88,7 +86,12 @@ public sealed class EcsSetup : MonoBehaviour
 		
 		_fixUpdateSystems.Destroy();
 		_fixUpdateSystems = null;
-		
+	
+#if UNITY_EDITOR
+		_editorSystems.Destroy();
+		_editorSystems = null;
+#endif
+
 		_world.Destroy();
 		_world = null;
 	}
@@ -116,12 +119,11 @@ public sealed class EcsSetup : MonoBehaviour
 
 	private void AddSystems()
 	{
-#if UNITY_EDITOR
-		_editorSystems.Add(new EcsWorldDebugSystem());
-#endif
 		_updateSystems
 			//Initialization
+			.Add(new InitializeGameSettingsSystem())
 			.Add(new InitializeUnityModelsSystem())
+			.Add(new InitializeLevelComponentSystem())
 			//Input 
 			.Add(new ReceiveInputSystem())
 			//Time
@@ -142,6 +144,7 @@ public sealed class EcsSetup : MonoBehaviour
 			//VFX
 			.Add(new SpawnExplosionVfxSystem())
 			.Add(new PutExplosionVfxBackToPoolSystem())
+			.Add(new SetHelicopterPositionToTheMaterialsSystem())
 			//Debugging
 			.Add(new ChangeTargetFpsSystem())
 			.Add(new PresentDebuggingInfoToUiSystem())
@@ -149,17 +152,19 @@ public sealed class EcsSetup : MonoBehaviour
 			.Add(new RemovePhysicsEventsSystem());
 
 		// _lateUpdateSystems
-			
-		
+
+
 		_fixUpdateSystems
 			//Helicopter
 			.Add(new MoveHelicopterSystem())
 			//Camerawork
 			.Add(new MoveCameraFollowTargetSystem());
-			
 
+#if UNITY_EDITOR
+		_editorSystems.Add(new EcsWorldDebugSystem());
+#endif
 	}
-	
+
 	private void InitializeSystems()
 	{
 #if UNITY_EDITOR

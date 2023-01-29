@@ -1,4 +1,5 @@
 ﻿using Ingame.Helicopter;
+using Ingame.Settings;
 using Ingame.Vfx;
 
 namespace Ingame.ConfigProvision
@@ -7,5 +8,6 @@ namespace Ingame.ConfigProvision
 	{
 		public HelicoptersConfig helicoptersConfig;
 		public VfxConfig vfxConfig;
+		public GameSettingsConfig GameSettingsConfig;
 	}
 }

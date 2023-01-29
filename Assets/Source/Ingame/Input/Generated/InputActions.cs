@@ -403,7 +403,7 @@ namespace Ingame.Input
                     ""id"": ""df5cad25-f812-42f6-9bfb-067c2f093c3f"",
                     ""path"": ""<Gamepad>/rightStick"",
                     ""interactions"": """",
-                    ""processors"": ""ScaleVector2(x=100,y=100)"",
+                    ""processors"": """",
                     ""groups"": """",
                     ""action"": ""Rotation"",
                     ""isComposite"": false,
@@ -423,6 +423,33 @@ namespace Ingame.Input
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""ReloadLevel"",
+                    ""type"": ""Button"",
+                    ""id"": ""8c669ce8-d950-49a4-9987-1ee82b5f7b63"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""KeyboardSchemeDetection"",
+                    ""type"": ""Button"",
+                    ""id"": ""44d1d56b-0e06-4452-b9e1-776254269cee"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""XboxGamepadSchemeDetection"",
+                    ""type"": ""Button"",
+                    ""id"": ""e65caf1a-3b08-4a54-8b5a-5944039521af"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -434,6 +461,226 @@ namespace Ingame.Input
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""ChangeTargetFPS"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""40a1aa66-c96f-4f5b-8b67-bd09c07629d9"",
+                    ""path"": ""<Gamepad>/start"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ChangeTargetFPS"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""795bcab4-aeaf-47ec-adb2-beccbfc91a32"",
+                    ""path"": ""<Keyboard>/f1"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ReloadLevel"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""13b2a0fe-dc20-4655-8121-6098762ffe02"",
+                    ""path"": ""<Gamepad>/select"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ReloadLevel"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""4f4a7ffa-da05-4a0d-b4c4-527fe4633c22"",
+                    ""path"": ""<Keyboard>/anyKey"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""KeyboardSchemeDetection"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""63e8b9a9-7322-4eee-87d8-b33767d77d98"",
+                    ""path"": ""<XInputController>/leftTrigger"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""XboxGamepadSchemeDetection"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""0d4687f4-ca02-4a49-9b38-f36e686af383"",
+                    ""path"": ""<XInputController>/rightTrigger"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""XboxGamepadSchemeDetection"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""848f63f4-8097-4d69-94d0-80b5f58fa7bc"",
+                    ""path"": ""<XInputController>/leftShoulder"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""XboxGamepadSchemeDetection"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""eb7c3037-195c-448b-b7a0-e7a7c98f0f4f"",
+                    ""path"": ""<XInputController>/rightShoulder"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""XboxGamepadSchemeDetection"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""01d9a54f-c320-4990-8952-031fdd9161a6"",
+                    ""path"": ""<XInputController>/leftStickPress"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""XboxGamepadSchemeDetection"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""400501fd-71b3-493f-9198-5344fa103370"",
+                    ""path"": ""<XInputController>/rightStickPress"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""XboxGamepadSchemeDetection"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""9bed8d4f-5607-4825-9ca8-8c03154f04a7"",
+                    ""path"": ""<XInputController>/buttonNorth"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""XboxGamepadSchemeDetection"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""6e5db46d-6570-4cb0-a45c-9ec942871d1d"",
+                    ""path"": ""<XInputController>/buttonEast"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""XboxGamepadSchemeDetection"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""c48a755f-d9c8-47a4-8743-f197a0a12413"",
+                    ""path"": ""<XInputController>/buttonSouth"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""XboxGamepadSchemeDetection"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""1cdfeeba-21ae-49d1-9065-3c25b0d92cd4"",
+                    ""path"": ""<XInputController>/buttonWest"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""XboxGamepadSchemeDetection"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""de3d341f-ff64-4a7f-b83d-caf40f4ce2ab"",
+                    ""path"": ""<XInputController>/dpad/up"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""XboxGamepadSchemeDetection"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""b9c995ec-d090-4dcd-a175-f1433a29cb87"",
+                    ""path"": ""<XInputController>/dpad/right"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""XboxGamepadSchemeDetection"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""e72a41c3-defe-4329-9f3a-c2e449af45ec"",
+                    ""path"": ""<XInputController>/dpad/down"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""XboxGamepadSchemeDetection"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""81862999-8c70-45ab-9dd3-97db04ee32ef"",
+                    ""path"": ""<XInputController>/dpad/left"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""XboxGamepadSchemeDetection"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""1fac1de3-3717-4b91-b235-6465f2e1259b"",
+                    ""path"": ""<XInputController>/select"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""XboxGamepadSchemeDetection"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""ad68156e-679a-4821-95a8-a9dd6c0c2f55"",
+                    ""path"": ""<XInputController>/start"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""XboxGamepadSchemeDetection"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -457,6 +704,9 @@ namespace Ingame.Input
             // Utils
             m_Utils = asset.FindActionMap("Utils", throwIfNotFound: true);
             m_Utils_ChangeTargetFPS = m_Utils.FindAction("ChangeTargetFPS", throwIfNotFound: true);
+            m_Utils_ReloadLevel = m_Utils.FindAction("ReloadLevel", throwIfNotFound: true);
+            m_Utils_KeyboardSchemeDetection = m_Utils.FindAction("KeyboardSchemeDetection", throwIfNotFound: true);
+            m_Utils_XboxGamepadSchemeDetection = m_Utils.FindAction("XboxGamepadSchemeDetection", throwIfNotFound: true);
         }
 
         public void Dispose()
@@ -640,11 +890,17 @@ namespace Ingame.Input
         private readonly InputActionMap m_Utils;
         private IUtilsActions m_UtilsActionsCallbackInterface;
         private readonly InputAction m_Utils_ChangeTargetFPS;
+        private readonly InputAction m_Utils_ReloadLevel;
+        private readonly InputAction m_Utils_KeyboardSchemeDetection;
+        private readonly InputAction m_Utils_XboxGamepadSchemeDetection;
         public struct UtilsActions
         {
             private @InputActions m_Wrapper;
             public UtilsActions(@InputActions wrapper) { m_Wrapper = wrapper; }
             public InputAction @ChangeTargetFPS => m_Wrapper.m_Utils_ChangeTargetFPS;
+            public InputAction @ReloadLevel => m_Wrapper.m_Utils_ReloadLevel;
+            public InputAction @KeyboardSchemeDetection => m_Wrapper.m_Utils_KeyboardSchemeDetection;
+            public InputAction @XboxGamepadSchemeDetection => m_Wrapper.m_Utils_XboxGamepadSchemeDetection;
             public InputActionMap Get() { return m_Wrapper.m_Utils; }
             public void Enable() { Get().Enable(); }
             public void Disable() { Get().Disable(); }
@@ -657,6 +913,15 @@ namespace Ingame.Input
                     @ChangeTargetFPS.started -= m_Wrapper.m_UtilsActionsCallbackInterface.OnChangeTargetFPS;
                     @ChangeTargetFPS.performed -= m_Wrapper.m_UtilsActionsCallbackInterface.OnChangeTargetFPS;
                     @ChangeTargetFPS.canceled -= m_Wrapper.m_UtilsActionsCallbackInterface.OnChangeTargetFPS;
+                    @ReloadLevel.started -= m_Wrapper.m_UtilsActionsCallbackInterface.OnReloadLevel;
+                    @ReloadLevel.performed -= m_Wrapper.m_UtilsActionsCallbackInterface.OnReloadLevel;
+                    @ReloadLevel.canceled -= m_Wrapper.m_UtilsActionsCallbackInterface.OnReloadLevel;
+                    @KeyboardSchemeDetection.started -= m_Wrapper.m_UtilsActionsCallbackInterface.OnKeyboardSchemeDetection;
+                    @KeyboardSchemeDetection.performed -= m_Wrapper.m_UtilsActionsCallbackInterface.OnKeyboardSchemeDetection;
+                    @KeyboardSchemeDetection.canceled -= m_Wrapper.m_UtilsActionsCallbackInterface.OnKeyboardSchemeDetection;
+                    @XboxGamepadSchemeDetection.started -= m_Wrapper.m_UtilsActionsCallbackInterface.OnXboxGamepadSchemeDetection;
+                    @XboxGamepadSchemeDetection.performed -= m_Wrapper.m_UtilsActionsCallbackInterface.OnXboxGamepadSchemeDetection;
+                    @XboxGamepadSchemeDetection.canceled -= m_Wrapper.m_UtilsActionsCallbackInterface.OnXboxGamepadSchemeDetection;
                 }
                 m_Wrapper.m_UtilsActionsCallbackInterface = instance;
                 if (instance != null)
@@ -664,6 +929,15 @@ namespace Ingame.Input
                     @ChangeTargetFPS.started += instance.OnChangeTargetFPS;
                     @ChangeTargetFPS.performed += instance.OnChangeTargetFPS;
                     @ChangeTargetFPS.canceled += instance.OnChangeTargetFPS;
+                    @ReloadLevel.started += instance.OnReloadLevel;
+                    @ReloadLevel.performed += instance.OnReloadLevel;
+                    @ReloadLevel.canceled += instance.OnReloadLevel;
+                    @KeyboardSchemeDetection.started += instance.OnKeyboardSchemeDetection;
+                    @KeyboardSchemeDetection.performed += instance.OnKeyboardSchemeDetection;
+                    @KeyboardSchemeDetection.canceled += instance.OnKeyboardSchemeDetection;
+                    @XboxGamepadSchemeDetection.started += instance.OnXboxGamepadSchemeDetection;
+                    @XboxGamepadSchemeDetection.performed += instance.OnXboxGamepadSchemeDetection;
+                    @XboxGamepadSchemeDetection.canceled += instance.OnXboxGamepadSchemeDetection;
                 }
             }
         }
@@ -686,6 +960,9 @@ namespace Ingame.Input
         public interface IUtilsActions
         {
             void OnChangeTargetFPS(InputAction.CallbackContext context);
+            void OnReloadLevel(InputAction.CallbackContext context);
+            void OnKeyboardSchemeDetection(InputAction.CallbackContext context);
+            void OnXboxGamepadSchemeDetection(InputAction.CallbackContext context);
         }
     }
 }
