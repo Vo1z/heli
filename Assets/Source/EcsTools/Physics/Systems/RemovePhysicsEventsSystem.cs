@@ -1,8 +1,7 @@
-﻿using EcsTools.Physics;
-using Leopotam.EcsLite;
+﻿using Leopotam.EcsLite;
 using Leopotam.EcsLite.Di;
 
-namespace EcsTools.OneFrame
+namespace EcsTools.Physics
 {
 	public readonly struct RemovePhysicsEventsSystem : IEcsRunSystem
 	{

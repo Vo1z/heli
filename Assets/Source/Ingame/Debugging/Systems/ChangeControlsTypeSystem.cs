@@ -6,19 +6,20 @@ using Source.Ingame.Input;
 
 namespace Ingame.Debugging
 {
-	public readonly struct ChangeControlsTypeSystem : IEcsRunSystem
+	public sealed class ChangeControlsTypeSystem : IEcsRunSystem
 	{
-		private readonly EcsFilterInject<Inc<InputComponent>> _inputFilter;
-		private readonly EcsPoolInject<InputComponent> _inputCmpPool;
-
-		private readonly EcsFilterInject<Inc<GameSettingsComponent>> _settingsFilter;
-		private readonly EcsPoolInject<GameSettingsComponent> _gameSettingsCmpPool;
+		private readonly EcsWorldInject _worldProject = "project";
 
 		public void Run(IEcsSystems systems)
 		{
-			ref var inputCmp = ref _inputCmpPool.Value.GetFirstComponent(_inputFilter.Value);
-			ref var settingsCmp = ref _gameSettingsCmpPool.Value.GetFirstComponent(_settingsFilter.Value);
-			
+			var gameSettingsCmpFilter = _worldProject.Value.Filter<GameSettingsComponent>().End();
+			var gameSettingsCmpPool = _worldProject.Value.GetPool<GameSettingsComponent>();
+			var inputCmpFilter = _worldProject.Value.Filter<InputComponent>().End();
+			var inputCmpPool = _worldProject.Value.GetPool<InputComponent>();
+
+			ref var settingsCmp = ref gameSettingsCmpPool.GetFirstComponent(gameSettingsCmpFilter);
+			ref var inputCmp = ref inputCmpPool.GetFirstComponent(inputCmpFilter);
+
 			if(!inputCmp.changeContolsType)
 				return;
 			

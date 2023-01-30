@@ -7,21 +7,24 @@ using UnityEngine.SceneManagement;
 
 namespace Ingame.Debugging
 {
-	public readonly struct ReloadLevelSystem : IEcsRunSystem
+	public sealed class ReloadLevelSystem : IEcsRunSystem
 	{
-		private readonly EcsWorldInject _world;
+		private readonly EcsWorldInject _worldProject = "project";
 		
 		private readonly EcsFilterInject<Inc<InputComponent>> _inputFilter;
 		private readonly EcsPoolInject<InputComponent> _inputCmpPool;
 		
 		public void Run(IEcsSystems systems)
 		{
-			ref var inputCmp = ref _inputCmpPool.Value.GetFirstComponent(_inputFilter.Value);
+			var inputCmpFilter = _worldProject.Value.Filter<InputComponent>().End();
+			var inputCmpPool = _worldProject.Value.GetPool<InputComponent>();
 			
+			ref var inputCmp = ref inputCmpPool.GetFirstComponent(inputCmpFilter);
+
 			if(!inputCmp.reloadLevel)
 				return;
 			
-			_world.Value.SendSignal(new ChangeLevelRequest
+			_worldProject.Value.SendSignal(new ChangeLevelRequest
 			{
 				sceneIndex = SceneManager.GetActiveScene().buildIndex
 			});

@@ -9,12 +9,9 @@ namespace Ingame.Debugging
 {
 	public sealed class ChangeTargetFpsSystem : IEcsInitSystem, IEcsRunSystem
 	{
-		private readonly EcsWorldInject _world;
-		
-		private readonly EcsFilterInject<Inc<InputComponent>> _inputCmpFilter;
-		private readonly EcsPoolInject<InputComponent> _inputCmpPool;
+		private readonly EcsWorldInject _worldProject = "project";
 
-		private int[] _targetFramerates = { 144, 30}; 
+		private readonly int[] _targetFramerates = { 144, 30}; 
 		private int _currentTargetFramerateIndex = 0;
 		
 		public void Init(IEcsSystems systems)
@@ -24,12 +21,14 @@ namespace Ingame.Debugging
 		
 		public void Run(IEcsSystems systems)
 		{
-			if(_inputCmpFilter.Value.IsEmpty())
+			var inputCmpFilter = _worldProject.Value.Filter<InputComponent>().End();
+			var inputCmpPool = _worldProject.Value.GetPool<InputComponent>();
+
+			if(inputCmpFilter.IsEmpty())
 				return;
 
-			int inputEntity = _inputCmpFilter.Value.GetFirstEntity();
-			ref var inputCmp = ref _inputCmpPool.Value.Get(inputEntity);
-			
+			ref var inputCmp = ref inputCmpPool.GetFirstComponent(inputCmpFilter);
+
 			if(!inputCmp.changeFpsInput)
 				return;
 

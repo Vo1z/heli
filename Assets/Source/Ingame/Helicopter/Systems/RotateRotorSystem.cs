@@ -10,8 +10,9 @@ using UnityEngine;
 
 namespace Ingame.Helicopter
 {
-	public readonly struct RotateRotorSystem : IEcsRunSystem
+	public sealed class RotateRotorSystem : IEcsRunSystem
 	{
+		private readonly EcsWorldInject _worldProject = "project";
 		private readonly EcsCustomInject<ConfigProvider> _configProvider;
 		
 		private readonly EcsFilterInject<Inc<GameSettingsComponent>> _gameSettingsFilter;
@@ -28,8 +29,11 @@ namespace Ingame.Helicopter
 		{
 			if(_playerHeliFilter.Value.IsEmpty())
 				return;
-
-			ref var settingsCmp = ref _gameSettingsCmpPool.Value.GetFirstComponent(_gameSettingsFilter.Value);
+			
+			var gameSettingsCmpFilter = _worldProject.Value.Filter<GameSettingsComponent>().End();
+			var gameSettingsCmpPool = _worldProject.Value.GetPool<GameSettingsComponent>();
+			
+			ref var settingsCmp = ref gameSettingsCmpPool.GetFirstComponent(gameSettingsCmpFilter);
 			ref var playerHeliCmp = ref _heliCmpPool.Value.Get(_playerHeliFilter.Value.GetFirstEntity());
 			var currentHeliConfigData = _configProvider.Value.helicoptersConfig.GetHelicopterConfigData(playerHeliCmp.helicopterId);
 			

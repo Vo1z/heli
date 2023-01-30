@@ -11,28 +11,27 @@ using UnityEngine;
 
 namespace Ingame.Camerawork
 {
-	public readonly struct RotateCameraFollowTargetSystem : IEcsPostRunSystem
+	public sealed class RotateCameraFollowTargetSystem : IEcsPostRunSystem
 	{
-		private readonly EcsFilterInject<Inc<GameSettingsComponent>> _gameSettingsCmpFilter;
-		private readonly EcsPoolInject<GameSettingsComponent> _gameSettingsCmpPool;
+		private readonly EcsWorldInject _worldProject = "project";
 
 		private readonly EcsFilterInject<Inc<TransformModel, PlayerTag>> _playerFilter;
 		private readonly EcsFilterInject<Inc<TransformModel, TimerComponent, CameraFollowTargetTag>> _followTargetTagFilter;
 		private readonly EcsPoolInject<TransformModel> _transformMdlPool;
 		private readonly EcsPoolInject<TimerComponent> _timerCmpPool;
-		
-		private readonly EcsFilterInject<Inc<InputComponent>> _inputFilter;
-		private readonly EcsPoolInject<InputComponent> _inputCmpPool;
 
 		public void PostRun(IEcsSystems systems)
 		{
-			if (_inputFilter.Value.IsEmpty() || _followTargetTagFilter.Value.IsEmpty() || _playerFilter.Value.IsEmpty())
+			var gameSettingsCmpFilter = _worldProject.Value.Filter<GameSettingsComponent>().End();
+			var gameSettingsCmpPool = _worldProject.Value.GetPool<GameSettingsComponent>();
+			var inputCmpFilter = _worldProject.Value.Filter<InputComponent>().End();
+			var inputCmpPool = _worldProject.Value.GetPool<InputComponent>();
+
+			if (inputCmpFilter.IsEmpty() || _followTargetTagFilter.Value.IsEmpty() || _playerFilter.Value.IsEmpty())
 				return;
 
-			ref var settingsCmp = ref _gameSettingsCmpPool.Value.Get(_gameSettingsCmpFilter.Value.GetFirstEntity());
-			
-			int inputEntity = _inputFilter.Value.GetFirstEntity();
-			ref var inputCmp = ref _inputCmpPool.Value.Get(inputEntity);
+			ref var settingsCmp = ref gameSettingsCmpPool.GetFirstComponent(gameSettingsCmpFilter);
+			ref var inputCmp = ref inputCmpPool.GetFirstComponent(inputCmpFilter);
 
 			int playerEntity = _playerFilter.Value.GetFirstEntity();
 			ref var playerTransformCmp = ref _transformMdlPool.Value.Get(playerEntity);

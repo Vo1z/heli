@@ -9,14 +9,11 @@ using UnityEngine;
 
 namespace Ingame.UI.Debugging
 {
-	public struct PresentDebuggingInfoToUiSystem : IEcsRunSystem
+	public sealed class PresentDebuggingInfoToUiSystem : IEcsRunSystem
 	{
-		private readonly EcsWorldInject _world;
+		private readonly EcsWorldInject _worldProject = "project";
 		private readonly EcsCustomInject<ConfigProvider> _configProvider;
 
-		private readonly EcsFilterInject<Inc<GameSettingsComponent>> _gameSettingsFilter;
-		private readonly EcsPoolInject<GameSettingsComponent> _gameSettingsCmpPool;
-		
 		private readonly EcsFilterInject<Inc<UiDebuggingViewModel>> _uiDebuggingViewMdlFilter;
 		private readonly EcsPoolInject<UiDebuggingViewModel> _uiDebuggingViewMdlPool;
 
@@ -47,9 +44,12 @@ namespace Ingame.UI.Debugging
 			if(_heliCmpFilter.Value.IsEmpty())
 				return;
 
+			var gameSettingsCmpFilter = _worldProject.Value.Filter<GameSettingsComponent>().End();
+			var gameSettingsCmpPool = _worldProject.Value.GetPool<GameSettingsComponent>();
+			
 			int heliEntity = _heliCmpFilter.Value.GetFirstEntity();
 			ref var heliCmp = ref _heliCmpPool.Value.Get(heliEntity);
-			ref var settingsCmp = ref _gameSettingsCmpPool.Value.GetFirstComponent(_gameSettingsFilter.Value);
+			ref var settingsCmp = ref gameSettingsCmpPool.GetFirstComponent(gameSettingsCmpFilter);
 			bool isHardcoreControlScheme = settingsCmp.gameSettings.isHardcoreControlSchemeApplied;
 			
 			uiDebuggingView.SetHelicopterContent(heliCmp, GetVelocity(heliEntity), GetHeliNormalizationDumping(heliEntity, heliCmp), isHardcoreControlScheme);

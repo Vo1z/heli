@@ -11,13 +11,11 @@ using Zenject;
 
 namespace Ingame.Combat
 {
-	public readonly struct SpawnUnguidedRocketSystem : IEcsRunSystem
+	public sealed class SpawnUnguidedRocketSystem : IEcsRunSystem
 	{
+		private readonly EcsWorldInject _worldProject = "project";
 		private readonly EcsCustomInject<DiContainer> _diContainer;
 
-		private readonly EcsFilterInject<Inc<InputComponent>> _inputCmpFilter;
-		private readonly EcsPoolInject<InputComponent> _inputCmpPool;
-		
 		private readonly EcsFilterInject<Inc<UnguidedRocketSpawnerComponent>> _rocketSpawnerCmpFilter;
 		private readonly EcsPoolInject<UnguidedRocketSpawnerComponent> _rocketSpawnerCmpPool;
 		
@@ -29,7 +27,10 @@ namespace Ingame.Combat
 		
 		public void Run(IEcsSystems systems)
 		{
-			ref var inputCmp = ref _inputCmpPool.Value.Get(_inputCmpFilter.Value.GetRawEntities()[0]);
+			var inputCmpFilter = _worldProject.Value.Filter<InputComponent>().End();
+			var inputCmpPool = _worldProject.Value.GetPool<InputComponent>();
+
+			ref var inputCmp = ref inputCmpPool.GetFirstComponent(inputCmpFilter);
 
 			if(!inputCmp.shootInput)
 				return;

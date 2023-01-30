@@ -10,12 +10,10 @@ using UnityEngine;
 
 namespace Ingame.Vfx.Helicopter
 {
-	public readonly struct SetHelicopterPositionToTheMaterialsSystem : IEcsRunSystem
+	public sealed class SetHelicopterPositionToTheMaterialsSystem : IEcsRunSystem
 	{
 		private readonly EcsCustomInject<ConfigProvider> _configProvider;
-
-		private readonly EcsFilterInject<Inc<LevelComponent>> _levelCmpFilter;
-		private readonly EcsPoolInject<LevelComponent> _levelCmpPool;
+		private readonly EcsWorldInject _worldProject = "project";
 
 		private readonly EcsFilterInject<Inc<TransformModel, HelicopterComponent, PlayerTag>> _playerHeliFilter;
 		private readonly EcsPoolInject<TransformModel> _transformMdlPool;
@@ -24,10 +22,13 @@ namespace Ingame.Vfx.Helicopter
 
 		public void Run(IEcsSystems systems)
 		{
-			if(_playerHeliFilter.Value.IsEmpty() || _levelCmpFilter.Value.IsEmpty())
+			var levelCmpFilter = _worldProject.Value.Filter<LevelComponent>().End();
+			var levelCmpPool = _worldProject.Value.GetPool<LevelComponent>();
+			
+			if(_playerHeliFilter.Value.IsEmpty() || levelCmpFilter.IsEmpty())
 				return;
 
-			ref var levelCmp = ref _levelCmpPool.Value.Get(_levelCmpFilter.Value.GetFirstEntity());
+			ref var levelCmp = ref levelCmpPool.GetFirstComponent(levelCmpFilter);
 			var heliTransform = _transformMdlPool.Value.Get(_playerHeliFilter.Value.GetFirstEntity()).transform;
 			var requireHeliPositionMaterials = _configProvider
 				.Value

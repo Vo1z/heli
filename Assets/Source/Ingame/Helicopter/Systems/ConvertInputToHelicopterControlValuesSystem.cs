@@ -9,33 +9,32 @@ using UnityEngine;
 
 namespace Ingame.Helicopter
 {
-	public readonly struct ConvertInputToHelicopterControlValuesSystem : IEcsRunSystem
+	public sealed class ConvertInputToHelicopterControlValuesSystem : IEcsRunSystem
 	{
 		private readonly EcsCustomInject<ConfigProvider> _configProvider;
-		
-		private readonly EcsFilterInject<Inc<GameSettingsComponent>> _gameSettingsFilter;
-		private readonly EcsPoolInject<GameSettingsComponent> _gameSettingsCmpPool;
+		private readonly EcsWorldInject _worldProject = "project";
 
-		private readonly EcsFilterInject<Inc<InputComponent>> _inputFilter;
 		private readonly EcsFilterInject<Inc<HelicopterComponent, PlayerTag>> _helicopterFilter;
-		
-		private readonly EcsPoolInject<InputComponent> _inputCmpPool;
 		private readonly EcsPoolInject<HelicopterComponent> _helicopterCmpPool;
 
 		public void Run(IEcsSystems systems)
 		{
-			ref var settingsCmp = ref _gameSettingsCmpPool.Value.GetFirstComponent(_gameSettingsFilter.Value);
+			var gameSettingsCmpFilter = _worldProject.Value.Filter<GameSettingsComponent>().End();
+			var gameSettingsCmpPool = _worldProject.Value.GetPool<GameSettingsComponent>();
+			var inputCmpFilter = _worldProject.Value.Filter<InputComponent>().End();
+			var inputCmpPool = _worldProject.Value.GetPool<InputComponent>();
+			
+			ref var settingsCmp = ref gameSettingsCmpPool.GetFirstComponent(gameSettingsCmpFilter);
+			ref var inputCmp = ref inputCmpPool.GetFirstComponent(inputCmpFilter);
 
 			if (settingsCmp.gameSettings.isHardcoreControlSchemeApplied)
-				ConvertAsHardcoreInput();
+				ConvertAsHardcoreInput(inputCmp);
 			else
-				ConvertAsCasualInput();
+				ConvertAsCasualInput(inputCmp);
 		}
 
-		private void ConvertAsCasualInput()
+		private void ConvertAsCasualInput(in InputComponent inputCmp)
 		{
-			ref var inputCmp = ref _inputCmpPool.Value.Get(_inputFilter.Value.GetRawEntities()[0]);
-
 			foreach (var heliEntity in _helicopterFilter.Value)
 			{
 				ref var heliCmp = ref _helicopterCmpPool.Value.Get(heliEntity);
@@ -54,10 +53,8 @@ namespace Ingame.Helicopter
 			}
 		}
 
-		private void ConvertAsHardcoreInput()
+		private void ConvertAsHardcoreInput(in InputComponent inputCmp)
 		{
-			ref var inputCmp = ref _inputCmpPool.Value.Get(_inputFilter.Value.GetRawEntities()[0]);
-
 			foreach (var heliEntity in _helicopterFilter.Value)
 			{
 				ref var heliCmp = ref _helicopterCmpPool.Value.Get(heliEntity);

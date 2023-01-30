@@ -9,12 +9,11 @@ using UnityEngine;
 
 namespace Ingame.Helicopter
 {
-	public readonly struct MoveHelicopterSystem : IEcsRunSystem
+	public sealed class MoveHelicopterSystem : IEcsRunSystem
 	{
-		private readonly EcsFilterInject<Inc<GameSettingsComponent>> _gameSettingsFilter;
-		private readonly EcsPoolInject<GameSettingsComponent> _gameSettingsCmpPool;
-		
 		private readonly EcsCustomInject<ConfigProvider> _configProvider;
+		private readonly EcsWorldInject _worldProject = "project"; 
+		
 		private readonly EcsFilterInject<Inc<TransformModel, RigidBodyModel, HelicopterComponent>> _helicopterFilter;
 		
 		private readonly EcsPoolInject<TransformModel> _transformMdlPool;
@@ -23,7 +22,10 @@ namespace Ingame.Helicopter
 		
 		public void Run(IEcsSystems systems)
 		{
-			ref var settingsCmp = ref _gameSettingsCmpPool.Value.GetFirstComponent(_gameSettingsFilter.Value);
+			var settingsCmpFilter = _worldProject.Value.Filter<GameSettingsComponent>().End();
+			var settingsCmpPool = _worldProject.Value.GetPool<GameSettingsComponent>();
+				
+			ref var settingsCmp = ref settingsCmpPool.GetFirstComponent(settingsCmpFilter);
 			
 			foreach (var helicopterEntity in _helicopterFilter.Value)
 			{

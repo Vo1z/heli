@@ -1,4 +1,5 @@
 ﻿using EcsTools.ClassExtensions;
+using Ingame.Setup;
 using Leopotam.EcsLite;
 using UnityEngine;
 using Zenject;
@@ -16,7 +17,7 @@ namespace EcsTools.Physics
 		private Collider _collider;
 		
 		[Inject]
-		private void Construct(EcsWorld world)
+		private void Construct([Inject(Id = EcsWorldContext.SceneContext)]EcsWorld world)
 		{
 			_world = world;
 			_collider = GetComponent<Collider>();

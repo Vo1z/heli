@@ -55,7 +55,7 @@ GameObject:
   - component: {fileID: 6313254215953682025}
   - component: {fileID: 6313254215953682022}
   m_Layer: 0
-  m_Name: Ecs - Setup
+  m_Name: Ecs - SceneSetup
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

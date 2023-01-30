@@ -1,5 +1,4 @@
-using System;
-using EcsTools.OneFrame;
+using EcsTools.Physics;
 using Ingame.Camerawork;
 using Ingame.Combat;
 using Ingame.ConfigProvision;
@@ -12,8 +11,7 @@ using Leopotam.EcsLite;
 using Leopotam.EcsLite.Di;
 using EcsTools.Timer;
 using EcsTools.UnityModels;
-using Ingame.LevelMamengement;
-using Ingame.Settings;
+using Ingame.Setup;
 using Ingame.Vfx.Explosion;
 using Ingame.Vfx.Helicopter;
 using UnityEngine;
@@ -23,9 +21,10 @@ using Zenject;
 using Leopotam.EcsLite.UnityEditor;
 #endif
 
-public sealed class EcsSetup : MonoBehaviour
+public sealed class EcsSetupScene : MonoBehaviour
 {
-	private EcsWorld _world;
+	private EcsWorld _worldProject;
+	private EcsWorld _sceneWorld;
 	private EcsSystems _updateSystems;
 	private EcsSystems _lateUpdateSystems;
 	private EcsSystems _fixUpdateSystems;
@@ -36,16 +35,23 @@ public sealed class EcsSetup : MonoBehaviour
 	private InputActions _inputActions;
 	private ConfigProvider _configProvider;
 	private DiContainer _diContainer;
-
+	
 	[Inject]
-	private void Construct(EcsWorld world, InputActions inputActions, ConfigProvider configProvider, DiContainer diContainer)
+	private void Construct
+	(
+		[Inject(Id = EcsWorldContext.ProjectContext)]EcsWorld worldProject,
+		[Inject(Id = EcsWorldContext.SceneContext)]EcsWorld worldScene,
+		InputActions inputActions, 
+		ConfigProvider configProvider,
+		DiContainer diContainer)
 	{
-		_world = world;
-		_updateSystems = new EcsSystems(world);
-		_lateUpdateSystems = new EcsSystems(world);
-		_fixUpdateSystems = new EcsSystems(world);
+		_worldProject = worldProject;
+		_sceneWorld = worldScene;
+		_updateSystems = new EcsSystems(worldScene);
+		_lateUpdateSystems = new EcsSystems(worldScene);
+		_fixUpdateSystems = new EcsSystems(worldScene);
 #if UNITY_EDITOR
-		_editorSystems = new EcsSystems(_world);
+		_editorSystems = new EcsSystems(_sceneWorld);
 #endif
 		
 		_inputActions = inputActions;
@@ -92,26 +98,26 @@ public sealed class EcsSetup : MonoBehaviour
 		_editorSystems = null;
 #endif
 
-		_world.Destroy();
-		_world = null;
+		_sceneWorld.Destroy();
+		_sceneWorld = null;
 	}
 
 	private void AddInjections()
 	{
 		_updateSystems
-			.Inject(_world)
+			.AddWorld(_worldProject, "project")
 			.Inject(_inputActions)
 			.Inject(_configProvider)
 			.Inject(_diContainer);
 
 		_lateUpdateSystems
-			.Inject(_world)
+			.AddWorld(_worldProject, "project")
 			.Inject(_inputActions)
 			.Inject(_configProvider)
 			.Inject(_diContainer);
 		
 		_fixUpdateSystems
-			.Inject(_world)
+			.AddWorld(_worldProject, "project")
 			.Inject(_inputActions)
 			.Inject(_configProvider)
 			.Inject(_diContainer);
@@ -120,12 +126,7 @@ public sealed class EcsSetup : MonoBehaviour
 	private void AddSystems()
 	{
 		_updateSystems
-			//Initialization
-			.Add(new InitializeGameSettingsSystem())
 			.Add(new InitializeUnityModelsSystem())
-			.Add(new InitializeLevelComponentSystem())
-			//Input 
-			.Add(new ReceiveInputSystem())
 			//Time
 			.Add(new IncrementTimerTimeSystem())
 			//Helicopter
@@ -153,9 +154,7 @@ public sealed class EcsSetup : MonoBehaviour
 			//One frame
 			.Add(new RemovePhysicsEventsSystem());
 
-		_lateUpdateSystems
-			//Level management
-			.Add(new ChangeLevelSystem());
+		// _lateUpdateSystems
 
 
 		_fixUpdateSystems

@@ -1,4 +1,5 @@
-﻿using NaughtyAttributes;
+﻿using Ingame.Setup;
+using NaughtyAttributes;
 using UnityEngine;
 
 namespace Source.EcsExtensions.EntityReference
@@ -8,5 +9,8 @@ namespace Source.EcsExtensions.EntityReference
 	{
 		[ReadOnly]
 		public int entity;
+		
+		[ReadOnly]
+		public EcsWorldContext ecsWorldContext;
 	}
 }

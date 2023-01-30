@@ -1,5 +1,6 @@
 ﻿using EcsTools.ClassExtensions;
 using Ingame.LevelMamengement;
+using Ingame.Setup;
 using Leopotam.EcsLite;
 using NaughtyAttributes;
 using UnityEngine;
@@ -20,12 +21,12 @@ namespace Ingame.MainMenu.UI
 		[BoxGroup("Level loading")]
 		[SerializeField] [Scene] private int sceneToLoadOnPlayButtonClicked;
 
-		private EcsWorld _world;
-
+		private EcsWorld _worldProject;
+		
 		[Inject]
-		private void Construct(EcsWorld world)
+		private void Construct([Inject(Id = EcsWorldContext.ProjectContext)] EcsWorld world)
 		{
-			_world = world;
+			_worldProject = world;
 		}
 
 		private void Awake()
@@ -44,7 +45,7 @@ namespace Ingame.MainMenu.UI
 
 		private void OnPlayButtonClicked()
 		{
-			_world.SendSignal(new ChangeLevelRequest
+			_worldProject.SendSignal(new ChangeLevelRequest
 			{
 				sceneIndex = sceneToLoadOnPlayButtonClicked
 			});

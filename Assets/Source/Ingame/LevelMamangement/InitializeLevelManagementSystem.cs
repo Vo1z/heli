@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 namespace Ingame.LevelMamengement
 {
-	public readonly struct InitializeLevelComponentSystem : IEcsInitSystem
+	public readonly struct InitializeLevelManagementSystem : IEcsInitSystem
 	{
 		private readonly EcsWorldInject _world;
 		
