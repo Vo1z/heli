@@ -8,5 +8,13 @@ namespace EcsTools.ClassExtensions
 		{
 			return ref pool.Get(filter.GetFirstEntity());
 		}
+
+		public static void RemoveAllComponents<T>(this EcsPool<T> pool, EcsFilter filter) where T : struct
+		{
+			foreach (var entity in filter)
+			{
+				pool.Del(entity);
+			}
+		}
 	}
 }

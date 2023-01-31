@@ -5,6 +5,7 @@ using Leopotam.EcsLite.Di;
 using EcsTools.UnityModels;
 using Ingame.LevelMamengement;
 using Ingame.LevelMamengement.UI;
+using Ingame.SaveLoading;
 using Ingame.Settings;
 using Ingame.Setup;
 using UnityEngine;
@@ -82,14 +83,17 @@ public sealed class EcsSetupProject : MonoBehaviour
 			//One frame (these systems are at the beginning because events should be processed by scene EcsWorld)
 			.Add(new RemoveLevelManagementEventsSystem())
 			//Initialization
-			.Add(new InitializeGameSettingsSystem())
 			.Add(new InitializeUnityModelsSystem())
+			.Add(new InitializeSaveLoadingComponentSystem())
+			.Add(new InitializeGameSettingsSystem())
 			.Add(new InitializeLevelManagementSystem())
 			//Input 
 			.Add(new ReceiveInputSystem())
 			//Level management
 			.Add(new ChangeLevelSystem())
-			.Add(new UpdateLoadingUiSystem());
+			.Add(new UpdateLoadingUiSystem())
+			//Save loading
+			.Add(new PerformSaveSystem());
 
 
 #if UNITY_EDITOR
