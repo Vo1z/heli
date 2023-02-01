@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Runtime.InteropServices;
 using Ingame.Setup;
 using Leopotam.EcsLite;
 using Source.EcsExtensions.EntityReference;
@@ -33,16 +32,15 @@ namespace EcsTools.Convertion
 
 			if (ecsWorldContext == EcsWorldContext.SceneContext && worldScene == null)
 				throw new NullReferenceException($"{ecsWorldContext} ECS world is missing for {nameof(ConvertToEcsEntity)}");
+			
+			InitializeEntity();
 		}
 
-		private void Awake()
+		private void InitializeEntity()
 		{
 			EcsWorld ecsWorld = null;
 
-			if (ecsWorldContext == EcsWorldContext.ProjectContext)
-				ecsWorld = _worldProject;
-			else
-				ecsWorld = _worldScene;
+			ecsWorld = ecsWorldContext == EcsWorldContext.ProjectContext ? _worldProject : _worldScene;
 
 			int entity = ecsWorld.NewEntity();
 			

@@ -6,13 +6,13 @@ namespace EcsTools.UnityModels
 	public readonly struct InitializeUnityModelsSystem : IEcsPreInitSystem
 	{
 		private readonly EcsFilterInject<Inc<TransformModel>> _transformFilter;
-		private readonly EcsPool<TransformModel> _transformMdlPool;
+		private readonly EcsPoolInject<TransformModel> _transformMdlPool;
 
 		public void PreInit(IEcsSystems systems)
 		{
 			foreach (var entity in _transformFilter.Value)
 			{
-				ref var transformMdl = ref _transformMdlPool.Get(entity);
+				ref var transformMdl = ref _transformMdlPool.Value.Get(entity);
 
 				transformMdl.initialLocalPos = transformMdl.transform.localPosition;
 				transformMdl.initialLocalRot = transformMdl.transform.localRotation;

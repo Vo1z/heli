@@ -13,8 +13,8 @@ namespace Ingame.SaveLoading
 		private readonly EcsFilterInject<Inc<SaveLoadComponent>> _saveLoadCmpFilter;
 		private readonly EcsPoolInject<SaveLoadComponent> _saveLoadCmpPool;
 
-		private readonly EcsFilterInject<Inc<RequestSavingEvent>> _requestSavingEvnFilter;
-		private readonly EcsPoolInject<RequestSavingEvent> _requestSavingEvnPool;
+		private readonly EcsFilterInject<Inc<PerformSavingEvent>> _requestSavingEvnFilter;
+		private readonly EcsPoolInject<PerformSavingEvent> _requestSavingEvnPool;
 
 		private readonly List<Type> _savedTypes = new(32);
 		

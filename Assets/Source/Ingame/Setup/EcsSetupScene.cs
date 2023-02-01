@@ -1,3 +1,4 @@
+using System;
 using EcsTools.Physics;
 using Ingame.Camerawork;
 using Ingame.Combat;
@@ -11,6 +12,7 @@ using Leopotam.EcsLite;
 using Leopotam.EcsLite.Di;
 using EcsTools.Timer;
 using EcsTools.UnityModels;
+using Ingame.Settings.UI;
 using Ingame.Setup;
 using Ingame.Vfx.Explosion;
 using Ingame.Vfx.Helicopter;
@@ -57,7 +59,10 @@ public sealed class EcsSetupScene : MonoBehaviour
 		_inputActions = inputActions;
 		_configProvider = configProvider;
 		_diContainer = diContainer;
-		
+	}
+
+	private void Awake()
+	{
 		AddSystems();
 		AddInjections();
 		InitializeSystems();
@@ -127,6 +132,7 @@ public sealed class EcsSetupScene : MonoBehaviour
 	{
 		_updateSystems
 			.Add(new InitializeUnityModelsSystem())
+			.Add(new InitializeUiSettingsScreenSystem())
 			//Time
 			.Add(new IncrementTimerTimeSystem())
 			//Helicopter
@@ -146,6 +152,8 @@ public sealed class EcsSetupScene : MonoBehaviour
 			.Add(new SpawnExplosionVfxSystem())
 			.Add(new PutExplosionVfxBackToPoolSystem())
 			.Add(new SetHelicopterPositionToTheMaterialsSystem())
+			//Settings UI
+			.Add(new ShowHideSettingsUiSystem())
 			//Debugging
 			.Add(new ChangeTargetFpsSystem())
 			.Add(new ChangeControlsTypeSystem())

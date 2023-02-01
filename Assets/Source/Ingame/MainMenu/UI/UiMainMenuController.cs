@@ -1,5 +1,6 @@
 ﻿using EcsTools.ClassExtensions;
 using Ingame.LevelMamengement;
+using Ingame.Settings.UI;
 using Ingame.Setup;
 using Leopotam.EcsLite;
 using NaughtyAttributes;
@@ -22,11 +23,13 @@ namespace Ingame.MainMenu.UI
 		[SerializeField] [Scene] private int sceneToLoadOnPlayButtonClicked;
 
 		private EcsWorld _worldProject;
+		private EcsWorld _worldScene;
 		
 		[Inject]
-		private void Construct([Inject(Id = EcsWorldContext.ProjectContext)] EcsWorld world)
+		private void Construct([Inject(Id = EcsWorldContext.ProjectContext)] EcsWorld worldProject, [Inject(Id = EcsWorldContext.SceneContext)] EcsWorld worldScene)
 		{
-			_worldProject = world;
+			_worldProject = worldProject;
+			_worldScene = worldScene;
 		}
 
 		private void Awake()
@@ -53,7 +56,7 @@ namespace Ingame.MainMenu.UI
 
 		private void OnOptionsButtonClicked()
 		{
-			
+			_worldScene.SendSignal<ShowSettingsUiEvent>();
 		}
 
 		private void OnExitButtonClicked()
