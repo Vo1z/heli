@@ -20,7 +20,7 @@ namespace Ingame.Combat
 		private readonly EcsPoolInject<HealthComponent> _healthCmpPool;
 		private readonly EcsPoolInject<ApplyDamageComponent> _applyDamageCmpPool;
 
-		private readonly Collider[] _sphereCastCollidersBuffer = new Collider[32];
+		private readonly Collider[] _sphereCastCollidersBuffer = new Collider[64];
 		
 		public void Run(IEcsSystems systems)
 		{
@@ -49,10 +49,10 @@ namespace Ingame.Combat
 					
 					if(!hitCollider.TryGetComponent(out EcsEntityReference entityRef))
 						continue;
-					
+
 					if(!_healthCmpPool.Value.Has(entityRef.entity) || _applyDamageCmpPool.Value.Has(entityRef.entity))
 						continue;
-					
+
 					_applyDamageCmpPool.Value.Add(entityRef.entity) = new ApplyDamageComponent
 					{
 						damageType = explosionCmp.damageType,

@@ -1,4 +1,3 @@
-using System;
 using EcsTools.Physics;
 using Ingame.Camerawork;
 using Ingame.Combat;
@@ -12,8 +11,10 @@ using Leopotam.EcsLite;
 using Leopotam.EcsLite.Di;
 using EcsTools.Timer;
 using EcsTools.UnityModels;
+using Ingame.Detection;
 using Ingame.Settings.UI;
 using Ingame.Setup;
+using Ingame.Vfx.Destruction;
 using Ingame.Vfx.Explosion;
 using Ingame.Vfx.Helicopter;
 using UnityEngine;
@@ -146,12 +147,16 @@ public sealed class EcsSetupScene : MonoBehaviour
 			.Add(new PerformExplosionSystem())
 			//Health
 			.Add(new ApplyDamageSystem())
+			//Detection
+			.Add(new PerformDetectionBetweenRadarAndTargetSystem())
+			.Add(new BreakDetectionBetweenRadarAndTargetSystem())
 			//Camerawork
 			.Add(new RotateCameraFollowTargetSystem())
 			//VFX
 			.Add(new SpawnExplosionVfxSystem())
 			.Add(new PutExplosionVfxBackToPoolSystem())
 			.Add(new SetHelicopterPositionToTheMaterialsSystem())
+			.Add(new SetDestructionViewSystem())
 			//Settings UI
 			.Add(new ShowHideSettingsUiSystem())
 			//Debugging

@@ -35,6 +35,7 @@ namespace Ingame.Combat
 				flyingSpeed = rocketFlyingSpeed,
 				safeTime = rocketSafeTime
 			};
+			
 			explosionCmpPool.Add(entity) = new ExplosionComponent
 			{
 				damageType = damageType,

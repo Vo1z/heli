@@ -272,6 +272,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   entity: 0
+  ecsWorldContext: 0
 --- !u!114 &8113058275028216336
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -299,6 +300,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c5d34ef8d31a467aaafa10763cb7cc42, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ecsWorldContext: 0
 --- !u!114 &4931559137874895893
 MonoBehaviour:
   m_ObjectHideFlags: 0
