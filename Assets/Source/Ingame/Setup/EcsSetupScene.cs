@@ -14,6 +14,7 @@ using EcsTools.UnityModels;
 using Ingame.Detection;
 using Ingame.Settings.UI;
 using Ingame.Setup;
+using Ingame.Vehicle.Turret;
 using Ingame.Vfx.Destruction;
 using Ingame.Vfx.Explosion;
 using Ingame.Vfx.Helicopter;
@@ -144,12 +145,17 @@ public sealed class EcsSetupScene : MonoBehaviour
 			.Add(new SpawnUnguidedRocketSystem())
 			.Add(new MoveUnguidedRocketSystem())
 			.Add(new ExplodeUnguidedRocketSystem())
+			.Add(new SpawnRadarGuidedRocketSystem())
+			.Add(new MoveRadarGuidedRocketSystem())
+			.Add(new ExplodeRadarGuidedRocketSystem())
 			.Add(new PerformExplosionSystem())
 			//Health
 			.Add(new ApplyDamageSystem())
 			//Detection
 			.Add(new PerformDetectionBetweenRadarAndTargetSystem())
 			.Add(new BreakDetectionBetweenRadarAndTargetSystem())
+			//Vehicle
+			.Add(new RotateTurretTowardRadarTargetSystem())
 			//Camerawork
 			.Add(new RotateCameraFollowTargetSystem())
 			//VFX

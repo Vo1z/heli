@@ -20,8 +20,6 @@ namespace Ingame.LevelMamengement
 		private readonly EcsFilterInject<Inc<LevelComponent>> _levelCmpFilter;
 		private readonly EcsPoolInject<LevelComponent> _levelCmpPool;
 
-		private float _delayTime = 0f;
-		
 		public void Run(IEcsSystems systems)
 		{
 			if (!_sceneLoadingCmpFilter.Value.IsEmpty())

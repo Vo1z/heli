@@ -16,7 +16,7 @@ namespace Ingame.Combat
 	{
 		[BoxGroup("Rocket"), SerializeField] [Min(0f)] private float rocketFlyingSpeed = 500f;
 		[Tooltip("Amount of time that has to be passed after rocket launch in order to explode")]
-		[BoxGroup("Rocket"), SerializeField] [Min(0f)] private float rocketSafeTime = .2f;
+		[BoxGroup("Rocket"), SerializeField] [Min(0f)] private float rocketSafeTime = .05f;
 		
 		[BoxGroup("Explosion"), SerializeField] private DamageType damageType = DamageType.LightExplosive;
 		[BoxGroup("Explosion"), SerializeField] [Min(0f)] private float explosionRadius = 5f;

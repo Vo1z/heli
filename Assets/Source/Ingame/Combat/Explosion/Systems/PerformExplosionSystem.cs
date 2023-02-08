@@ -11,7 +11,7 @@ namespace Ingame.Combat
 {
 	public sealed class PerformExplosionSystem : IEcsRunSystem
 	{
-		private readonly EcsWorldInject _world;
+		private readonly EcsWorldInject _world = default;
 
 		private readonly EcsFilterInject<Inc<TransformModel, ExplosionComponent, PerformExplosionTag>> _performExplosionFilter;
 		private readonly EcsPoolInject<TransformModel> _transformMdlPool;
@@ -19,6 +19,7 @@ namespace Ingame.Combat
 		private readonly EcsPoolInject<PerformExplosionTag> _performExplosionTagPool;
 		private readonly EcsPoolInject<HealthComponent> _healthCmpPool;
 		private readonly EcsPoolInject<ApplyDamageComponent> _applyDamageCmpPool;
+		private readonly EcsPoolInject<DeleteEntityAfterExplosionTag> _deleteEntityAfterExplosionTagPool;
 
 		private readonly Collider[] _sphereCastCollidersBuffer = new Collider[64];
 		
@@ -58,6 +59,12 @@ namespace Ingame.Combat
 						damageType = explosionCmp.damageType,
 						amountOfDamage = explosionCmp.amountOfDamage
 					};
+				}
+
+				if (_deleteEntityAfterExplosionTagPool.Value.Has(entity))
+				{
+					Object.Destroy(explosionOriginTransform.gameObject);
+					_world.Value.DelEntity(entity);
 				}
 			}
 		}
