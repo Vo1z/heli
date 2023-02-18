@@ -45,7 +45,7 @@ namespace Ingame.Settings
 				return;
 			}
 
-			gameSettingsComp = _configProvider.Value.GameSettingsConfig.DefaultSettings;
+			gameSettingsComp = _configProvider.Value.gameSettingsConfig.DefaultSettings;
 			saveLoadComp.AddSaveComponent(gameSettingsComp);
 
 			_worldProject.Value.SendSignal<PerformSavingEvent>();

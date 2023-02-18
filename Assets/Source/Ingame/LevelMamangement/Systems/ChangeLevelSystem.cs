@@ -39,11 +39,11 @@ namespace Ingame.LevelMamengement
 		{
 			int sceneLoadingCmpEntity = _sceneLoadingCmpFilter.Value.GetFirstEntity();
 			ref var sceneLoadingProgressCmp = ref _sceneLoadingCmpPool.Value.Get(sceneLoadingCmpEntity);
+
+			_levelCmpPool.Value.GetFirstComponent(_levelCmpFilter.Value).sceneIndex = sceneLoadingProgressCmp.sceneToLoad;
 			
 			if(!sceneLoadingProgressCmp.sceneLoadingAsyncOperation.isDone)
 				return;
-			
-			_levelCmpPool.Value.GetFirstComponent(_levelCmpFilter.Value).sceneIndex = SceneManager.GetActiveScene().buildIndex;
 			
 			_worldProject.Value.SendSignal(new OnLevelLoadingEndedEvent());
 			_sceneLoadingCmpPool.Value.Del(sceneLoadingCmpEntity);
@@ -54,14 +54,15 @@ namespace Ingame.LevelMamengement
 		{
 			int requestEntity = _changeLevelReqFilter.Value.GetFirstEntity();
 			var changeLevelReq = _changeLevelReqPool.Value.Get(requestEntity);
-			
-			_changeLevelReqPool.Value.Del(requestEntity);
-			
+
 			_worldProject.Value.SendSignal(new OnLevelLoadingStartedEvent());
 			_worldProject.Value.SendSignal(new SceneLoadingProgressComponent
 			{
+				sceneToLoad = changeLevelReq.sceneIndex,
 				sceneLoadingAsyncOperation = SceneManager.LoadSceneAsync(changeLevelReq.sceneIndex)
 			});
+			
+			_changeLevelReqPool.Value.Del(requestEntity);
 		}
 	}
 }

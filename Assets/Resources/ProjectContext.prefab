@@ -240,9 +240,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 96c16610f6654f9ea848accbf134bdbf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  helicoptersConfig: {fileID: 11400000, guid: 34dda7311af140b4c868ae75c00910a0, type: 2}
-  vfxConfig: {fileID: 11400000, guid: 8ee4ef17afec9b845ade63a25405f29b, type: 2}
-  gameSettingsConfig: {fileID: 11400000, guid: bad8636e31ec84841af68231f911c506, type: 2}
+  configProvider:
+    helicoptersConfig: {fileID: 11400000, guid: 34dda7311af140b4c868ae75c00910a0,
+      type: 2}
+    vfxConfig: {fileID: 11400000, guid: 8ee4ef17afec9b845ade63a25405f29b, type: 2}
+    gameSettingsConfig: {fileID: 11400000, guid: bad8636e31ec84841af68231f911c506,
+      type: 2}
+    cursorConfig: {fileID: 11400000, guid: 516674e7eeb9be24a94dde4bc9098510, type: 2}
 --- !u!1 &3634061287726294045
 GameObject:
   m_ObjectHideFlags: 0

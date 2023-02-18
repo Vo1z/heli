@@ -4,6 +4,6 @@ namespace EcsTools.UnityModels
 {
 	public struct CameraModel
 	{
-		public Camera cameraModel;
+		public Camera camera;
 	}
 }

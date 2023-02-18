@@ -11,10 +11,12 @@ using Leopotam.EcsLite;
 using Leopotam.EcsLite.Di;
 using EcsTools.Timer;
 using EcsTools.UnityModels;
+using Ingame.CursorManagement;
 using Ingame.Detection;
 using Ingame.Settings.UI;
 using Ingame.Setup;
 using Ingame.Vehicle.Turret;
+using Ingame.Vfx.BilboardEffect;
 using Ingame.Vfx.Destruction;
 using Ingame.Vfx.Explosion;
 using Ingame.Vfx.Helicopter;
@@ -135,6 +137,7 @@ public sealed class EcsSetupScene : MonoBehaviour
 		_updateSystems
 			.Add(new InitializeUnityModelsSystem())
 			.Add(new InitializeUiSettingsScreenSystem())
+			.Add(new SetCursorPropertiesSystem())
 			//Time
 			.Add(new IncrementTimerTimeSystem())
 			//Helicopter
@@ -163,6 +166,7 @@ public sealed class EcsSetupScene : MonoBehaviour
 			.Add(new PutExplosionVfxBackToPoolSystem())
 			.Add(new SetHelicopterPositionToTheMaterialsSystem())
 			.Add(new SetDestructionViewSystem())
+			.Add(new RotateBillboardObjectsTowardsCameraSystem())
 			//Settings UI
 			.Add(new ShowHideSettingsUiSystem())
 			//Debugging

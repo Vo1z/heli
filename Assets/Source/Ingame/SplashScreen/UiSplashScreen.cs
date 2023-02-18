@@ -1,13 +1,25 @@
 ﻿using System.Collections;
+using EcsTools.ClassExtensions;
+using Ingame.LevelMamengement;
+using Ingame.Setup;
+using Leopotam.EcsLite;
 using NaughtyAttributes;
 using UnityEngine;
-using UnityEngine.SceneManagement;
+using Zenject;
 
 namespace Ingame.SplashScreen
 {
 	public sealed class UiSplashScreen : MonoBehaviour
 	{
 		[SerializeField] [Scene] private int sceneToLoad;
+
+		private EcsWorld _worldProject;
+		
+		[Inject]
+		private void Construct([Inject(Id = EcsWorldContext.ProjectContext)]EcsWorld worldProject)
+		{
+			_worldProject = worldProject;
+		}
 
 		private void Start()
 		{
@@ -17,7 +29,10 @@ namespace Ingame.SplashScreen
 		private IEnumerator LoadScene()
 		{
 			yield return new WaitForSeconds(1f);
-			SceneManager.LoadScene(sceneToLoad);
+			_worldProject.SendSignal(new ChangeLevelRequest
+			{
+				sceneIndex = sceneToLoad
+			});
 		}
 	}
 }

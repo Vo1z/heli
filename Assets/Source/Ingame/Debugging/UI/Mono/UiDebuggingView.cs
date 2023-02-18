@@ -25,7 +25,7 @@ namespace Ingame.UI.Debugging
 			fpsText.SetText($"FPS: {fps}");
 		}
 
-		public void SetHelicopterContent(in HelicopterComponent heliCmp, in Vector3 velocity, float normalizationDumping, bool isHardcoreScheme)
+		public void SetHelicopterContent(in HelicopterComponent heliCmp, in Vector3 velocity, float normalizationDumping, bool isHardcoreScheme, bool isDetectedByTheRadar)
 		{
 			var heliConfigData = _helicoptersConfig.GetHelicopterConfigData(heliCmp.helicopterId);
 			float throttleInPercentage = isHardcoreScheme ? 
@@ -44,7 +44,9 @@ namespace Ingame.UI.Debugging
 			                     "===========================\n" +
 			                     $"Throttle: {throttleInPercentage}% ({heliCmp.currentThrottle})\n" +
 			                     $"SPEED: {heliCmp.currentSpeed}\n" +
-			                     $"ALT: {heliCmp.currentAltitude}";
+			                     $"ALT: {heliCmp.currentAltitude}\n" +
+			                     "===========================\n" +
+			                     $"Is detected by the radar: {isDetectedByTheRadar}";
 
 			helicopterInfoText.SetText(heliContent);
 		}
