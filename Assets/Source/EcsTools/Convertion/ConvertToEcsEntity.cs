@@ -57,7 +57,20 @@ namespace EcsTools.Convertion
 			foreach (var ecsBaker in bakers)
 			{
 				ecsBaker.Bake(entity, world);
-				Destroy(ecsBaker);
+				
+				switch (ecsBaker.destroyOptions)
+				{
+					case BakerLifetimeOptions.DestroyAfterBaking:
+						Destroy(ecsBaker);
+						break;
+					case BakerLifetimeOptions.DontDestroyInEditor:
+#if !UNITY_EDITOR
+						Destroy(ecsBaker);
+#endif
+						break;
+					case BakerLifetimeOptions.DontDestroyEverywhere:
+						break;
+				}
 			}
 		}
 

@@ -15,6 +15,7 @@ using Ingame.CursorManagement;
 using Ingame.Detection;
 using Ingame.Settings.UI;
 using Ingame.Setup;
+using Ingame.Soldiers;
 using Ingame.Vehicle.Turret;
 using Ingame.Vfx.BilboardEffect;
 using Ingame.Vfx.Destruction;
@@ -157,6 +158,9 @@ public sealed class EcsSetupScene : MonoBehaviour
 			//Detection
 			.Add(new PerformDetectionBetweenRadarAndTargetSystem())
 			.Add(new BreakDetectionBetweenRadarAndTargetSystem())
+			//Soldiers
+			.Add(new GenerateSoldierDestinationPositionSystem())
+			.Add(new ChangeSoldierDestinationPositionSystem())
 			//Vehicle
 			.Add(new RotateTurretTowardRadarTargetSystem())
 			//Camerawork
