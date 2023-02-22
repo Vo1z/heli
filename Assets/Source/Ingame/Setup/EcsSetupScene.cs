@@ -149,6 +149,7 @@ public sealed class EcsSetupScene : MonoBehaviour
 			.Add(new RotateRotorSystem())
 			//Combat
 			.Add(new SpawnUnguidedProjectileSystem())
+			.Add(new SpawnBulletFromSoldierToShootPlayerSystem())
 			.Add(new MoveUnguidedProjectileSystem())
 			.Add(new ExplodeUnguidedProjectileSystem())
 			.Add(new SpawnRadarGuidedRocketSystem())
@@ -184,7 +185,6 @@ public sealed class EcsSetupScene : MonoBehaviour
 			.Add(new PresentDebuggingInfoToUiSystem())
 			//One frame
 			.Add(new RemovePhysicsEventsSystem());
-
 		// _lateUpdateSystems
 
 

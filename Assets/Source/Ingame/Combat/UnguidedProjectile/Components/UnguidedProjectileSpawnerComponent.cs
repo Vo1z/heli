@@ -4,7 +4,7 @@ namespace Ingame.Combat
 {
 	public struct UnguidedProjectileSpawnerComponent
 	{
-		public UnguidedProjectileBaker unguidedProjectilePrefab;
+		public Transform unguidedProjectilePrefab;
 		public Transform[] spawnOriginTransforms;
 	}
 }

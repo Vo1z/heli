@@ -17,7 +17,7 @@ namespace Ingame.Combat
 			
 			ref var rocketSpawnerCmp = ref rocketSpawnerCmpPool.Add(entity);
 
-			rocketSpawnerCmp.unguidedProjectilePrefab = unguidedProjectilePrefab;
+			rocketSpawnerCmp.unguidedProjectilePrefab = unguidedProjectilePrefab.transform;
 			rocketSpawnerCmp.spawnOriginTransforms = spawnOriginTransforms;
 		}
 	}
