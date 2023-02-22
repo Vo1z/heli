@@ -8,7 +8,7 @@ using UnityEngine.Serialization;
 using UnityEditor;
 #endif
 
-namespace Ingame.Detection
+namespace Ingame.Detection.Radar
 {
 	public sealed class RadarBaker : EcsMonoBaker
 	{

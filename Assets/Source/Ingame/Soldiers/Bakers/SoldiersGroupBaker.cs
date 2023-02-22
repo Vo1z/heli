@@ -11,7 +11,7 @@ namespace Ingame.Soldiers
 	public sealed class SoldiersGroupBaker : EcsMonoBaker
 	{
 		[BoxGroup("Group")]
-		[SerializeField] [Min(0)] private float operatingRadius;
+		[SerializeField] [Min(0)] private float operatingRadius = 10f;
 		
 		public override void Bake(int entity, EcsWorld world)
 		{

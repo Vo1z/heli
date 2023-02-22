@@ -12,7 +12,7 @@ namespace Ingame.Combat
 {
 	[RequireComponent(typeof(Rigidbody), typeof(Collider))]
 	[RequireComponent(typeof(OnTriggerEventSender), typeof(EcsEntityReference))]
-	public sealed class UnguidedRocketBaker : EcsMonoBaker
+	public sealed class UnguidedProjectileBaker : EcsMonoBaker
 	{
 		[BoxGroup("Rocket"), SerializeField] [Min(0f)] private float rocketFlyingSpeed = 500f;
 		[Tooltip("Amount of time that has to be passed after rocket launch in order to explode")]
@@ -24,13 +24,13 @@ namespace Ingame.Combat
 
 		public override void Bake(int entity, EcsWorld world)
 		{
-			var rocketCmpPool = world.GetPool<UnguidedRocketComponent>();
+			var rocketCmpPool = world.GetPool<UnguidedProjectileComponent>();
 			var explosionCmpPool = world.GetPool<ExplosionComponent>();
 			var timerCmpPool = world.GetPool<TimerComponent>();
 			var transformMdlPool = world.GetPool<TransformModel>();
 			var rigidbodyMdlPool = world.GetPool<RigidBodyModel>();
 
-			rocketCmpPool.Add(entity) = new UnguidedRocketComponent
+			rocketCmpPool.Add(entity) = new UnguidedProjectileComponent
 			{
 				flyingSpeed = rocketFlyingSpeed,
 				safeTime = rocketSafeTime

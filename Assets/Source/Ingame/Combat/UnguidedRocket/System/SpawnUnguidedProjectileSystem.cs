@@ -11,17 +11,17 @@ using Zenject;
 
 namespace Ingame.Combat
 {
-	public sealed class SpawnUnguidedRocketSystem : IEcsRunSystem
+	public sealed class SpawnUnguidedProjectileSystem : IEcsRunSystem
 	{
 		private readonly EcsWorldInject _worldProject = "project";
 		private readonly EcsCustomInject<DiContainer> _diContainer;
 
-		private readonly EcsFilterInject<Inc<UnguidedRocketSpawnerComponent>> _rocketSpawnerCmpFilter;
-		private readonly EcsPoolInject<UnguidedRocketSpawnerComponent> _rocketSpawnerCmpPool;
+		private readonly EcsFilterInject<Inc<UnguidedProjectileSpawnerComponent>> _rocketSpawnerCmpFilter;
+		private readonly EcsPoolInject<UnguidedProjectileSpawnerComponent> _rocketSpawnerCmpPool;
 		
-		private readonly EcsFilterInject<Inc<TransformModel, TimerComponent, UnguidedRocketComponent, FreeToReuseTag>> _freeReusedRocketsFilter;
+		private readonly EcsFilterInject<Inc<TransformModel, TimerComponent, UnguidedProjectileComponent, FreeToReuseTag>> _freeReusedRocketsFilter;
 		private readonly EcsPoolInject<TransformModel> _transformModelPool;
-		private readonly EcsPoolInject<UnguidedRocketComponent> _unguidedRocketCmp;
+		private readonly EcsPoolInject<UnguidedProjectileComponent> _unguidedRocketCmp;
 		private readonly EcsPoolInject<FreeToReuseTag> _freeToReuseEntityTagPool;
 		private readonly EcsPoolInject<TimerComponent> _timerCmpPool;
 		
@@ -62,7 +62,7 @@ namespace Ingame.Combat
 
 					_diContainer.Value.InstantiatePrefab
 					(
-						rocketSpawnerCmp.unguidedRocketPrefab,
+						rocketSpawnerCmp.unguidedProjectilePrefab,
 						spawnOriginTransform.position,
 						Quaternion.LookRotation(spawnOriginTransform.forward),
 						null

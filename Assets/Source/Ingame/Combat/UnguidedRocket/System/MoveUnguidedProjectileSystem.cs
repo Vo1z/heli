@@ -6,13 +6,13 @@ using UnityEngine;
 
 namespace Ingame.Combat 
 {
-	public readonly struct MoveUnguidedRocketSystem : IEcsRunSystem
+	public readonly struct MoveUnguidedProjectileSystem : IEcsRunSystem
 	{
-		private readonly EcsFilterInject<Inc<TransformModel, RigidBodyModel, UnguidedRocketComponent>, Exc<FreeToReuseTag>> _rocketFilter;
+		private readonly EcsFilterInject<Inc<TransformModel, RigidBodyModel, UnguidedProjectileComponent>, Exc<FreeToReuseTag>> _rocketFilter;
 
 		private readonly EcsPoolInject<TransformModel> _transformMdlPool;
 		private readonly EcsPoolInject<RigidBodyModel> _rigidBodyMdlPool;
-		private readonly EcsPoolInject<UnguidedRocketComponent> _rocketCmpPool;
+		private readonly EcsPoolInject<UnguidedProjectileComponent> _rocketCmpPool;
 		
 		public void Run(IEcsSystems systems)
 		{

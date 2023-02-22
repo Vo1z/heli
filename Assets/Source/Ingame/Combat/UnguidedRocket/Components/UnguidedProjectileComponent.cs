@@ -1,6 +1,6 @@
 ﻿namespace Ingame.Combat
 {
-	public struct UnguidedRocketComponent
+	public struct UnguidedProjectileComponent
 	{
 		/// <summary>
 		/// Amount of time that has to be passed after rocket launch in order to explode

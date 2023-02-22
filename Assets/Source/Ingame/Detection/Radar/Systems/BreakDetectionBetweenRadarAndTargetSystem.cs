@@ -1,14 +1,16 @@
-﻿using EcsTools.UnityModels;
+﻿using System.Runtime.CompilerServices;
+using EcsTools.UnityModels;
 using Ingame.Health;
 using Leopotam.EcsLite;
 using Leopotam.EcsLite.Di;
+using Tools.ClassExtensions;
 using UnityEngine;
 
-namespace Ingame.Detection
+namespace Ingame.Detection.Radar
 {
 	public readonly struct BreakDetectionBetweenRadarAndTargetSystem : IEcsRunSystem
 	{
-		private readonly EcsFilterInject<Inc<TransformModel, DetectionTargetTag, IsRadarDetectedTag>, Exc<IsDeadTag>> _detectedTargetFilter;
+		private readonly EcsFilterInject<Inc<TransformModel, RadarDetectionTargetTag, IsRadarDetectedTag>, Exc<IsDeadTag>> _detectedTargetFilter;
 		private readonly EcsFilterInject<Inc<TransformModel, RadarComponent>, Exc<IsDeadTag>> _radarFilter;
 
 		private readonly EcsPoolInject<TransformModel> _transformMdlPool;
@@ -30,29 +32,16 @@ namespace Ingame.Detection
 
 					if(fromRadarToTargetVector.magnitude <= radarCmp.detectionDistance)
 						if(Vector3.Angle(Vector3.up, fromRadarToTargetVector) < radarCmp.detectionAngle)
-							if (!IsThereAnyObstacleBetweenTargetAndRadar(radarTransform, targetTransform))
+							if (!PhysicsUtilities.IsThereAnyObstacleBetween(radarTransform, targetTransform))
 							{
 								isTargetVisibleByTheRadar = true;
 								break;
-							} //If at least on radar can see us then we stop looking checking another
+							} //If at least one radar can see us then we stop looking checking another
 				}
 				
 				if(!isTargetVisibleByTheRadar)
 					_isDetectedTagPool.Value.Del(targetEntity);
 			}
-		}
-		
-		private bool IsThereAnyObstacleBetweenTargetAndRadar(Transform radarTransform, Transform targetTransform)
-		{
-			if (Physics.Linecast(radarTransform.position, targetTransform.position, out RaycastHit hit))
-			{
-				if (hit.collider.transform == radarTransform || hit.collider.transform == targetTransform)
-					return false;
-				
-				return true;
-			}
-
-			return false;
 		}
 	}
 }

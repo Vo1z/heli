@@ -2,21 +2,22 @@
 using Leopotam.EcsLite;
 using NaughtyAttributes;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace Ingame.Combat
 {
-	public sealed class UnguidedRocketSpawnerBaker : EcsMonoBaker
+	public sealed class UnguidedProjectileSpawnerBaker : EcsMonoBaker
 	{
-		[Required, SerializeField] private UnguidedRocketBaker unguidedRocketPrefab;
+		[FormerlySerializedAs("unguidedRocketPrefab")] [Required, SerializeField] private UnguidedProjectileBaker unguidedProjectilePrefab;
 		[SerializeField] private Transform[] spawnOriginTransforms;
 
 		public override void Bake(int entity, EcsWorld world)
 		{
-			var rocketSpawnerCmpPool = world.GetPool<UnguidedRocketSpawnerComponent>();
+			var rocketSpawnerCmpPool = world.GetPool<UnguidedProjectileSpawnerComponent>();
 			
 			ref var rocketSpawnerCmp = ref rocketSpawnerCmpPool.Add(entity);
 
-			rocketSpawnerCmp.unguidedRocketPrefab = unguidedRocketPrefab;
+			rocketSpawnerCmp.unguidedProjectilePrefab = unguidedProjectilePrefab;
 			rocketSpawnerCmp.spawnOriginTransforms = spawnOriginTransforms;
 		}
 	}

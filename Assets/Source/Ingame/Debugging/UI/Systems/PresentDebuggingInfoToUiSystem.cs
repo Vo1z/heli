@@ -2,6 +2,8 @@
 using EcsTools.ClassExtensions;
 using Ingame.ConfigProvision;
 using Ingame.Detection;
+using Ingame.Detection.Radar;
+using Ingame.Detection.Vision;
 using Ingame.Helicopter;
 using Ingame.Settings;
 using Leopotam.EcsLite;
@@ -23,6 +25,7 @@ namespace Ingame.UI.Debugging
 		
 		private readonly EcsPoolInject<RigidBodyModel> _rigidbodyMdlPool;
 		private readonly EcsPoolInject<IsRadarDetectedTag> _isRadarDetectedTagPool;
+		private readonly EcsPoolInject<IsVisuallyDetectedTag> _isVisuallyDetectedTagPool;
 
 		public void Run(IEcsSystems systems)
 		{
@@ -54,6 +57,7 @@ namespace Ingame.UI.Debugging
 			ref var settingsCmp = ref gameSettingsCmpPool.GetFirstComponent(gameSettingsCmpFilter);
 			bool isHardcoreControlScheme = settingsCmp.gameSettings.isHardcoreControlSchemeApplied;
 			bool isDetectedBuyTheRadar = _isRadarDetectedTagPool.Value.Has(heliEntity);
+			bool isVisuallyDetected = _isVisuallyDetectedTagPool.Value.Has(heliEntity);
 			
 			uiDebuggingView.SetHelicopterContent
 				(
@@ -61,7 +65,8 @@ namespace Ingame.UI.Debugging
 					GetVelocity(heliEntity),
 					GetHeliNormalizationDumping(heliEntity, heliCmp),
 					isHardcoreControlScheme,
-					isDetectedBuyTheRadar
+					isDetectedBuyTheRadar,
+					isVisuallyDetected
 				);
 		}
 

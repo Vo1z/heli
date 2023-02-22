@@ -8,11 +8,11 @@ using Tools.ClassExtensions;
 
 namespace Ingame.Combat
 {
-	public readonly struct ExplodeUnguidedRocketSystem : IEcsRunSystem
+	public readonly struct ExplodeUnguidedProjectileSystem : IEcsRunSystem
 	{
 		private readonly EcsFilterInject<Inc<OnTriggerEnterRequest>> _onTriggerEnterReqFilter;
 		private readonly EcsPoolInject<OnTriggerEnterRequest> _onTriggerEnterReqPool;
-		private readonly EcsPoolInject<UnguidedRocketComponent> _rocketPool;
+		private readonly EcsPoolInject<UnguidedProjectileComponent> _rocketPool;
 		private readonly EcsPoolInject<ExplosionComponent> _explosionCmpPool;
 		private readonly EcsPoolInject<PerformExplosionTag> _performExplosionTagPool;
 		private readonly EcsPoolInject<FreeToReuseTag> _freeToReuseTagPool;

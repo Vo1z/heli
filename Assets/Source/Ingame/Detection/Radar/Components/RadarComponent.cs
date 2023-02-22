@@ -1,4 +1,4 @@
-﻿namespace Ingame.Detection
+﻿namespace Ingame.Detection.Radar
 {
 	public struct RadarComponent
 	{

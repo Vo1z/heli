@@ -2,6 +2,7 @@
 using EcsTools.ClassExtensions;
 using EcsTools.UnityModels;
 using Ingame.Detection;
+using Ingame.Detection.Radar;
 using Ingame.Health;
 using Leopotam.EcsLite;
 using Leopotam.EcsLite.Di;

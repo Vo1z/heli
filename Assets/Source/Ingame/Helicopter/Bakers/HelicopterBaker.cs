@@ -1,6 +1,8 @@
-﻿using EcsTools.Convertion;
+﻿using EcsTools.ClassExtensions;
+using EcsTools.Convertion;
 using EcsTools.UnityModels;
-using Ingame.Detection;
+using Ingame.Detection.Radar;
+using Ingame.Detection.Vision;
 using Leopotam.EcsLite;
 using Tools.HelicopterAttributte;
 using UnityEngine;
@@ -18,12 +20,26 @@ namespace Ingame.Helicopter
 			var transformMdlPool = world.GetPool<TransformModel>();
 			var rigidbodyMdlPool = world.GetPool<RigidBodyModel>();
 			var heliCmpPool = world.GetPool<HelicopterComponent>();
-			var detectionTargetTagPool = world.GetPool<DetectionTargetTag>();
+			var detectionTargetTagPool = world.GetPool<RadarDetectionTargetTag>();
+			var visualDetectionTargetTagPool = world.GetPool<VisualDetectionTargetTag>();
 
-			transformMdlPool.Add(entity).transform = transform;
-			rigidbodyMdlPool.Add(entity).rigidbody = GetComponent<Rigidbody>();
-			heliCmpPool.Add(entity).helicopterId = heliId;
-			detectionTargetTagPool.Add(entity);
+			transformMdlPool.TryAdd(entity, new TransformModel
+			{
+				transform = transform
+			});
+			
+			rigidbodyMdlPool.TryAdd(entity, new RigidBodyModel
+			{
+				rigidbody = GetComponent<Rigidbody>()
+			});
+			
+			heliCmpPool.TryAdd(entity, new HelicopterComponent
+			{
+				helicopterId = heliId
+			});
+			
+			detectionTargetTagPool.TryAdd(entity);
+			visualDetectionTargetTagPool.TryAdd(entity);
 		}
 	}
 }

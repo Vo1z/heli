@@ -13,6 +13,8 @@ using EcsTools.Timer;
 using EcsTools.UnityModels;
 using Ingame.CursorManagement;
 using Ingame.Detection;
+using Ingame.Detection.Radar;
+using Ingame.Detection.Vision;
 using Ingame.Settings.UI;
 using Ingame.Setup;
 using Ingame.Soldiers;
@@ -146,9 +148,9 @@ public sealed class EcsSetupScene : MonoBehaviour
 			.Add(new CalculateHelicopterStatsSystem())
 			.Add(new RotateRotorSystem())
 			//Combat
-			.Add(new SpawnUnguidedRocketSystem())
-			.Add(new MoveUnguidedRocketSystem())
-			.Add(new ExplodeUnguidedRocketSystem())
+			.Add(new SpawnUnguidedProjectileSystem())
+			.Add(new MoveUnguidedProjectileSystem())
+			.Add(new ExplodeUnguidedProjectileSystem())
 			.Add(new SpawnRadarGuidedRocketSystem())
 			.Add(new MoveRadarGuidedRocketSystem())
 			.Add(new ExplodeRadarGuidedRocketSystem())
@@ -158,6 +160,8 @@ public sealed class EcsSetupScene : MonoBehaviour
 			//Detection
 			.Add(new PerformDetectionBetweenRadarAndTargetSystem())
 			.Add(new BreakDetectionBetweenRadarAndTargetSystem())
+			.Add(new PerformVisualDetectionSystem())
+			.Add(new BreakVisualDetectionSystem())
 			//Soldiers
 			.Add(new GenerateSoldierDestinationPositionSystem())
 			.Add(new ChangeSoldierDestinationPositionSystem())
