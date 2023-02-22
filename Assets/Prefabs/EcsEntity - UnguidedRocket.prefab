@@ -313,8 +313,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1f111d5652344f028eba525b85439547, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  destroyOptions: 0
   rocketFlyingSpeed: 500
   rocketSafeTime: 0.05
+  maxFlyTime: 10
   damageType: 4
   explosionRadius: 5
   amountOfDamage: 100

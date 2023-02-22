@@ -15,6 +15,7 @@ namespace Ingame.Detection.Vision
 		private readonly EcsPoolInject<TransformModel> _transformMdlPool;
 		private readonly EcsPoolInject<VisualDetectorComponent> _visualDetectorCmpPool;
 		private readonly EcsPoolInject<IsVisuallyDetectedTag> _isVisuallyDetectedTagPool;
+		private readonly EcsPoolInject<IsAvailableToVisuallySeeTargetTag> _isAvailableToVisuallySeeTargetTagPool;
 
 		public void Run(IEcsSystems systems)
 		{
@@ -34,6 +35,7 @@ namespace Ingame.Detection.Vision
 					if(PhysicsUtilities.IsThereAnyObstacleBetween(detectorTransform, targetTransform))
 						continue;
 
+					_isAvailableToVisuallySeeTargetTagPool.Value.Add(detectorEntity);
 					_isVisuallyDetectedTagPool.Value.Add(targetEntity);
 				}
 			}

@@ -1,4 +1,5 @@
-﻿using EcsTools.UnityModels;
+﻿using EcsTools.ClassExtensions;
+using EcsTools.UnityModels;
 using Leopotam.EcsLite;
 using Leopotam.EcsLite.Di;
 using Tools.ClassExtensions;
@@ -14,6 +15,7 @@ namespace Ingame.Detection.Vision
 		private readonly EcsPoolInject<TransformModel> _transformMdlPool;
 		private readonly EcsPoolInject<VisualDetectorComponent> _visualDetectorCmpPool;
 		private readonly EcsPoolInject<IsVisuallyDetectedTag> _isVisuallyDetectedTagPool;
+		private readonly EcsPoolInject<IsAvailableToVisuallySeeTargetTag> _isAvailableToVisuallySeeTargetTagPool;
 		
 		public void Run(IEcsSystems systems)
 		{
@@ -27,14 +29,19 @@ namespace Ingame.Detection.Vision
 					ref var detectorCmp = ref _visualDetectorCmpPool.Value.Get(detectorEntity);
 					var detectorTransform = _transformMdlPool.Value.Get(detectorEntity).transform;
 
-					if(Vector3.Distance(targetTransform.position, detectorTransform.position) > detectorCmp.detectionDistance)
-						continue;
-
-					if (!PhysicsUtilities.IsThereAnyObstacleBetween(detectorTransform, targetTransform))
+					if (Vector3.Distance(targetTransform.position, detectorTransform.position) > detectorCmp.detectionDistance)
 					{
-						isTargetVisibleByTheDetector = true;
-						break;
-					} //If at least one detector can see us then we stop looking checking another
+						_isAvailableToVisuallySeeTargetTagPool.Value.TryDel(detectorEntity);
+						continue;
+					}
+
+					if (PhysicsUtilities.IsThereAnyObstacleBetween(detectorTransform, targetTransform))
+					{
+						_isAvailableToVisuallySeeTargetTagPool.Value.TryDel(detectorEntity);
+						continue;
+					}
+					
+					isTargetVisibleByTheDetector = true;
 				}
 				
 				if(!isTargetVisibleByTheDetector)

@@ -44,5 +44,21 @@ namespace EcsTools.ClassExtensions
 			
 			return true;
 		}
+
+		
+		/// <summary>
+		/// Deletes component from the entity without throwing an exception if entity does not has such component
+		/// </summary>
+		/// <returns>true if component was successfully deleted. false otherwise</returns>
+		public static bool TryDel<T>(this EcsPool<T> pool, int entity) where T : struct
+		{
+			if (pool.Has(entity))
+			{
+				pool.Del(entity);
+				return true;
+			}
+
+			return false;
+		}
 	}
 }
